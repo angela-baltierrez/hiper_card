@@ -1,8 +1,6 @@
 body{
   margin: 0;
-
 }
-
 
 form {
   max-width: 450px;
@@ -11,14 +9,15 @@ form {
   padding: 30px;
   border-radius: 5px;
   border: 1px solid #e7e7e7;
-  box-shadow: 0 5px 12px 5px rgba(0, 0, 0, 0.12);;
+  box-shadow: 0 5px 12px 5px rgba(0, 0, 0, 0.12);
 }
+
 h1 {
   text-align: center;
   margin-bottom: 20px;
-  font-weight: 700 !important;
-  
+  font-weight: 700 !important;  
 }
+
 h3 {
   text-align: center;
   margin-bottom: 20px;
@@ -46,14 +45,15 @@ input[type="text"]
   font-size: 16px;
   box-sizing: border-box;
   transition: 0.5s;
+  outline:none!important;
 }
 
 input:hover{
-  border: 1px solid #3e8e41;
+  border: 1px solid #0051ffbd;
 }
 
 input:active{
-  border: 1px solid #3e8e41;
+  border: 1px solid #0051ffbd;
 }
 
 .form-group button {
