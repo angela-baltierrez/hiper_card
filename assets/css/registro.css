@@ -1,5 +1,10 @@
 body{
     margin: 0;
+    background-image: url(img_carrito.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
   }
   
   form {
@@ -9,7 +14,8 @@ body{
     padding: 30px;
     border-radius: 5px;
     border: 1px solid #e7e7e7;
-    box-shadow: 0 5px 12px 5px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 5px 12px 20px rgba(0, 0, 0, 0.12);
+    background-color: #ffffff;
   }
   
   h1 {
@@ -29,7 +35,7 @@ body{
   
   label {
     text-align: center;
-    color: white;
+    color: rgba(0, 0, 0, 0.705);
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
