@@ -1,0 +1,42 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    background-color: aquamarine;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 10px;
+}
+
+.header .logo img{ 
+    height: 70px;
+    width: auto;
+}
+
+.header .search_box{
+    display: flex;
+    margin: auto;
+    height: 35px; /*altura*/
+    line-height: 35px;
+}
+
+.header .search_box input{
+    border: 0.1px;
+    border-style: solid;
+    border-radius: 6px;
+    padding: 5px
+}
+
+.header .nav-link{
+    list-style: none; /*para quitar los puntitos de la lista*/
+}
+
+.header .nav-link li{
+    display: inline-block; /*para que ser forme en horizontal*/
+    padding: 15px; /*separar los botones*/
+}
