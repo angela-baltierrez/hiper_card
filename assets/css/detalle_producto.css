@@ -40,3 +40,74 @@
     display: inline-block; /*para que ser forme en horizontal*/
     padding: 15px; /*separar los botones*/
 }
+
+.mani{
+    font-size: 20px;
+    height: 100vh;
+}
+
+.nav-opciones-categorias{
+    margin: auto; 
+    padding: 0.5rem 1.5rem; /*separar los botones*/
+    border-radius: 10px;
+    list-style: none;
+}
+
+.nav-opciones-categorias .nav-link-lista {
+    display: flex; /*para que ser forme en horizontal y hacer menu de los botones*/
+    
+    gap: 30px;
+}
+
+
+.nav-opciones-categorias .nav-link, .nav-menu, .nav-link-departamentos {
+    padding: 5px; /*separar los botones*/
+    list-style: none;
+    cursor: pointer;
+}
+
+
+.nav-opciones-categorias a{
+    text-decoration: none;
+    color: currentColor;
+}
+
+.nav-opciones-categorias .nav-link-departamentos {
+    background-color: blue;
+    border-radius: 5px;
+    color: white;
+}
+
+.nav-opciones-categorias .nav-menu{
+    position: absolute;
+    line-height: 1.5;
+    padding: 1.5rem;
+    margin: 0.2rem -0.1rem;
+    list-style: none;
+    background-color: gray;
+    border-radius: 10px;
+    display: none;
+}
+
+.nav-opciones-categorias .nav-link:hover{
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+}
+.nav-opciones-categorias .nav-link-departamentos:hover{
+    background-color: rgb(230, 122, 14);
+    color: white;
+}
+
+.nav-opciones-categorias  .nav-menu-opciones{
+    padding:0 0 20px 0;
+}
+
+.nav-opciones-categorias .nav-menu a{
+    padding-top: 10px;
+}
+
+.nav-link-departamentos:hover .nav-menu{
+    display: block;
+}
+
