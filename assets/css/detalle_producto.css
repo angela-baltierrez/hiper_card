@@ -109,13 +109,67 @@
 .nav-link-departamentos:hover .nav-menu{
     display: block;
 }
-.para_la_foto{
 
-width: 500px;
-height: 500px;
+.paraproducto{
+    display: flex;
+    
+    
+}
+.para_la_foto{
+width: 550px;
+height: 550px;
 margin-left: 90px;
 background-color: gray;
 display: flex;
 align-items: center;
 justify-content: center;
+}
+
+.para_la_informacion{
+    width: 550px;
+    height: 550px;
+    margin-left: 50px;
+    background-color: rebeccapurple;
+
+    }
+.para_la_informacion_titulo{
+    margin-left: 10px;
+    font-size: 80px;
+}
+
+.para_la_informacion_precio{
+    margin-top: 50px;
+    margin-left: 30px;
+    font-size: 50px;
+}
+
+.button_comprar {
+    background-color: white; 
+    border: 2px solid #04AA6D;
+    border-radius: 10px;
+    color: black; 
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    margin-top: 50px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    padding: 14px 50px; /*tamaño del boton*/
+  }
+.button_comprar:hover{
+    background-color: #04AA6D;
+    color: white;
+}
+.descripcion_texto{
+    margin-left: 30px;
+    font-size: 40px;
+}
+.para_la_informacion_descripcion{
+    margin-left: 30px;
+    font-size: 20px;
 }
