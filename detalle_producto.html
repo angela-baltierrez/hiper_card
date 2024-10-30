@@ -44,13 +44,29 @@
      </ul>  
  </nav>
  </div>
+<section>
+<div class="dirreciones_de_departamentos">
+    <p>inicio/</p>
+    <p>postre/</p>
+    <p>flan</p>
+</div>
+</section>
+
      <div>
          <seletion class="producto_informacion">
        <div class="paraproducto">
-         <div class="para_la_foto">
-             <img src="../hiper_card/assets/images/products/flan.jpg" alt="pepe" width="500px" height="500px">
-             
-         </div>
+        <div class="paraminiproducto">
+            <img class="imagen_click" src="../hiper_card/assets/images/products/flan.jpg" alt="pepe" width="100px" height="100px" onclick="cambiarFoto(this)">
+            <div class="separacionminiproducto">
+            <img class="imagen_click" src="../hiper_card/assets/images/products/sobre_de_flan.png" alt="pepe" width="100px" height="100px" onclick="cambiarFoto(this)">
+            <div class="separacionminiproducto">
+            <img class="imagen_click" src="../hiper_card/assets/images/products/Flan-Royal-Vainilla-etiqueta.png" alt="pepe" width="100px" height="100px" onclick="cambiarFoto(this)">
+            </div>
+        </div>
+        </div>
+            <div class="para_la_foto">
+                <img id="foto_seleccionada" src="../hiper_card/assets/images/products/flan.jpg" alt="pepe" width="500px" height="500px">
+            </div>
          <div class="para_la_informacion">
              <div class="para_la_informacion_titulo"><p>Flan</p></div>
                  <div class="para_la_informacion_precio"><p>$1000</p></div>
@@ -63,5 +79,35 @@
        </div>
      </seletion>
      </div>
+    <footer>
+        <div class="contenido_extra">
+            <div class="categoria_extra">
+                <p>categoria</p>
+                <ul>
+                    <li>leche</li>
+                    <li>carne</li>
+                    <li>bebidas</li>
+                    <li>snack</li>
+                    <li>limpienza</li>
+                    <li>salsa</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
  </body>
+ <script>
+    function cambiarFoto(element) {
+        // Obtener la fuente de la imagen seleccionada
+        const nuevaFuente = element.src;
+        // Cambiar la imagen principal a la nueva fuente
+        document.getElementById('foto_seleccionada').src = nuevaFuente;
+
+            // Remover la clase de borde de todas las miniaturas
+        const miniaturas = document.querySelectorAll('.paraminiproducto img');
+        miniaturas.forEach(img => img.classList.remove('imagen-seleccionada'));
+
+        // Agregar la clase de borde a la imagen seleccionada
+        element.classList.add('imagen-seleccionada');
+    }
+    </script>   
 </html>
