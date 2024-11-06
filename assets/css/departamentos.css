@@ -1,0 +1,281 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    background-color: #7fffd4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 10px;
+}
+
+.header .logo img{ 
+    height: 70px;
+    width: auto;
+}
+
+.header .search_box{
+    display: flex;
+    margin: auto;
+    height: 35px; /*altura*/
+    line-height: 35px;
+}
+
+.header .search_box input{
+    border: 0.1px;
+    border-style: solid;
+    border-radius: 6px;
+    padding: 5px
+}
+
+.header .nav-link{
+    list-style: none; /*para quitar los puntitos de la lista*/
+}
+
+.header .nav-link li{
+    display: inline-block; /*para que ser forme en horizontal*/
+    padding: 15px; /*separar los botones*/
+}
+
+.mani{
+    font-size: 20px;
+    height: 50px;
+}
+
+.nav-opciones-categorias{
+    margin: auto; 
+    padding: 0.5rem 1.5rem; /*separar los botones*/
+    border-radius: 10px;
+    list-style: none;
+}
+
+.nav-opciones-categorias .nav-link-lista {
+    display: flex; /*para que ser forme en horizontal y hacer menu de los botones*/
+    gap: 30px;
+}
+
+
+.nav-opciones-categorias .nav-link, .nav-menu, .nav-link-departamentos {
+    padding: 5px; /*separar los botones*/
+    list-style: none;
+    cursor: pointer;
+}
+
+
+.nav-opciones-categorias a{
+    text-decoration: none;
+    color: currentColor;
+}
+
+.nav-opciones-categorias .nav-link-departamentos {
+    background-color: blue;
+    border-radius: 5px;
+    color: white;
+}
+
+.nav-opciones-categorias .nav-menu{
+    position: absolute;
+    line-height: 1.5;
+    padding: 1.5rem;
+    margin: 0.2rem -0.1rem;
+    list-style: none;
+    background-color: gray;
+    border-radius: 10px;
+    display: none;
+}
+
+.nav-opciones-categorias .nav-link:hover{
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+}
+.nav-opciones-categorias .nav-link-departamentos:hover{
+    background-color: rgb(230, 122, 14);
+    color: white;
+}
+
+.nav-opciones-categorias  .nav-menu-opciones{
+    padding:0 0 20px 0;
+}
+
+.nav-opciones-categorias .nav-menu a{
+    padding-top: 10px;
+}
+
+.nav-link-departamentos:hover .nav-menu{
+    display: block;
+}
+
+
+.aside {
+    background-color: #f4f4f4;
+    padding: 1.5rem;
+    width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 2rem;
+}
+
+.barra_departamentos {
+    text-align: center;
+}
+
+.barra_departamentos h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.barra_departamentos ul {
+    list-style: none;
+    padding: 0;
+}
+
+.barra_departamentos ul li {
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+    cursor: pointer;
+    color: #555;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    transition: color 0.3s;
+}
+
+.barra_departamentos ul li:hover {
+    color: #007bff; /* Color destacado al pasar el cursor */
+}
+
+/* Estilos para la sección de selección de productos */
+.selecion_de_productos {
+    flex-grow: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ajustar_la_busquedar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 1rem;
+}
+
+.productos_cartas_disponible {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.cuerpo_de_la_carta {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 180px;
+    text-align: center;
+}
+
+.cuerpo_carta_imagen img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.departamentos_pertence a {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: #007bff;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+}
+
+.nombre_del_producto {
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nombre_del_producto:hover {
+    text-decoration: underline;
+}
+
+.precio_producto span {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #28a745;
+}
+
+.añadir_carro a {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.añadir_carro a:hover {
+    background-color: #0056b3;
+}
+
+
+.footer {
+    background-color: #d6d6d6;
+    padding: 4rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenido_extra {
+    width: 80%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.titulo_categoria {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.cuadro_extra {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Reduce el espacio entre las listas */
+}
+
+.categoria_extra {
+    width: 150px; /* Ancho fijo para las listas */
+}
+
+.lista_categoria {
+    list-style: none;
+    padding: 0;
+}
+
+.lista_categoria li {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    cursor: pointer;
+    color: rgb(110, 110, 110);
+}
+
+.lista_categoria li:hover {
+    color: #333;
+    text-decoration: underline;
+}
