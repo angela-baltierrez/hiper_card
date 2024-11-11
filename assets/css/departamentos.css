@@ -2,10 +2,11 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: Inter, sans-serif
 }
 
 .header{
-    background-color: #7fffd4;
+    background-color: #02cd02;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -16,6 +17,11 @@
 .header .logo img{ 
     height: 70px;
     width: auto;
+}
+
+.header .titulo_pagina a{
+    color: black;
+text-decoration: none;
 }
 
 .header .search_box{
@@ -110,50 +116,49 @@
     display: block;
 }
 
-/* Contenedor principal para alinear aside y section */
-.contenido-principal {
-    display: flex;
-    gap: 1.5rem; /* Espacio entre aside y section */
-    padding: 1.5rem;
-}
-
-/* Estilo para el aside */
-.aside {
-    background-color: #f4f4f4;
-    padding: 1.5rem;
-    width: 200px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.barra_departamentos {
-    text-align: center;
-}
-
-.barra_departamentos h2 {
-    font-size: 1.8rem;
-    color: #333;
-    margin-bottom: 1rem;
-}
-
-.barra_departamentos ul {
-    list-style: none;
-    padding: 0;
-}
-
-.barra_departamentos ul li {
-    font-size: 1.2rem;
-    padding: 0.5rem 0;
-    cursor: pointer;
-    color: #555;
-    text-align: center;
+/* Sección de direccion_departamentos */
+.direccion_departamentos {
+    padding: 20px;
+    background-color: #f9f9f9;
     border-bottom: 1px solid #ddd;
-    transition: color 0.3s;
 }
 
-.barra_departamentos ul li:hover {
-    color: #007bff;
+.direccion_departamentos_seleccion {
+    display: flex;
+    align-items: center;
 }
+
+.ruta {
+    display: flex;
+    align-items: center;
+}
+
+.ruta_item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.ruta_link {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 14px;
+}
+
+.ruta_separador {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: #888;
+}
+
+/* Iconos y flechas */
+.ruta_icono,
+.ruta_flecha {
+    fill: currentColor;
+}
+
+
 /* Contenedor principal para alinear aside y ajustar_la_busquedar */
 .contenido_principal{
     display: flex;
@@ -172,7 +177,7 @@
 }
 
 .barra_departamentos h2 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: #333;
     margin-bottom: 1rem;
 }
@@ -235,10 +240,16 @@
 .columna {
     background-color: #f8f8f8;
     padding: 1rem;
+    border: 1.5px solid transparent; /* Borde inicial */
+    transition: border-color 0.3s ease;
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     width: 230px;
+}
+
+.columna:hover {
+    border-color: rgb(2, 179, 2); /* Color verde cuando se pasa el cursor encima */
 }
 
 .cuerpo_de_la_carta img {
