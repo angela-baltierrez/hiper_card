@@ -168,6 +168,7 @@
     width: 200px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 200px;
 }
 
 .barra_departamentos h2 {
@@ -202,16 +203,27 @@
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 100px;
+
 }
 
 .producto_cantidad_resultado {
+    display: flex;
     margin-bottom: 1rem;
     font-size: 1.2rem;
+    width: 100%;
+    justify-content:space-between;
 }
 
 .cantidad_total {
     font-weight: bold;
     color: #333;
+}
+
+.forma_selecionar{
+    display: flex;
+    justify-content:space-between;
+    width: 100%;
 }
 
 .productos_cartas_disponible {
@@ -226,7 +238,7 @@
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    width: 200px;
+    width: 230px;
 }
 
 .cuerpo_de_la_carta img {
