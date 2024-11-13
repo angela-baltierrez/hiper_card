@@ -1,26 +1,46 @@
 <?php
-define("HOST", "localhost");
-define("DB", "hiper-card");
-define("USER","root");
-define("PASSWORD", "");
-$conn = mysqli_connect(HOST, USER, PASSWORD, DB);
 
-if (!$conn)
-{
-    die ("No hay conexión: ".mysqli_connect_error());
+$serverName = "DESKTOP-55DKBTU"; //ESTO CAMBIALO POR EL NOMBRE DE TU SERVIDOR
+$connectionOptions = array(
+    "Database" => "hiper-cart",
+    "Uid" => "ssmas", //COLOCA EN NOM DE USUARIO (ANTES ERA "ROOT" AHORA NC CREO QUE "sa")
+    "PWD" => "hola123",//COLOCA LA CONTRASEÑA PARA ACCEDER AL SERVIDOR (SI NO TIENE DEJALO ASI)
+);
+
+// Conexión a la base de datos
+$conn = sqlsrv_connect($serverName, $connectionOptions);
+
+if ($conn === false) {
+    die(print_r(sqlsrv_errors(), true));
 }
 
-$email = $_POST["email"];
-$pass = md5($_POST["password"]);
+// Iniciar sesión
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST["email"];
+    $password = $_POST["password"];
 
-$query= mysqli_query($conn, "SELECT email, contraseña FROM Clientes WHERE email = '" . $email . "' and contraseña = '" . $pass . "'");
-$nr = mysqli_num_rows($query);
+    // Consulta SQL
+    $sql = "SELECT email, contraseña FROM Clientes WHERE email =  '" . $email . "' AND contraseña = '" . $password . "'";
+    $params = array($email, $password);
 
-if($nr == 1){
-    header('Location: ../supernidea.html ');
+    $stmt = sqlsrv_query($conn, $sql, $params);
+
+    if ($stmt === false) {
+        die(print_r(sqlsrv_errors(), true));
+    }
+
+    // Verificar si hay coincidencias
+    if (sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
+        echo "Inicio de sesión exitoso.";
+        header('Location: ../supernidea.html ');
+    } else {
+        echo "Nombre de usuario o contraseña incorrectos.";
+    }
+
+    // Liberar recursos
+    sqlsrv_free_stmt($stmt);
 }
-else if ($nr == 0)
-{
-    header('Location: ../login.html');
-}
-?> 
+
+// Cerrar la conexión
+sqlsrv_close($conn);
+?>
