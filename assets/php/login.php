@@ -1,46 +1,31 @@
 <?php
+$dsn = "mysql:host=localhost;dbname=ximax;charset=utf8";
+$usuario = "root";
+$contrasena = "";
 
-$serverName = "DESKTOP-55DKBTU"; //ESTO CAMBIALO POR EL NOMBRE DE TU SERVIDOR
-$connectionOptions = array(
-    "Database" => "hiper-cart",
-    "Uid" => "ssmas", //COLOCA EN NOM DE USUARIO (ANTES ERA "ROOT" AHORA NC CREO QUE "sa")
-    "PWD" => "hola123",//COLOCA LA CONTRASEÑA PARA ACCEDER AL SERVIDOR (SI NO TIENE DEJALO ASI)
-);
+try {
+    $conn = new PDO($dsn, $usuario, $contrasena);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// Conexión a la base de datos
-$conn = sqlsrv_connect($serverName, $connectionOptions);
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
 
-if ($conn === false) {
-    die(print_r(sqlsrv_errors(), true));
-}
+        // Consulta para obtener la contraseña encriptada
+        $sql = "SELECT contraseña FROM Clientes WHERE email = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$email]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Iniciar sesión
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-
-    // Consulta SQL
-    $sql = "SELECT email, contraseña FROM Clientes WHERE email =  '" . $email . "' AND contraseña = '" . $password . "'";
-    $params = array($email, $password);
-
-    $stmt = sqlsrv_query($conn, $sql, $params);
-
-    if ($stmt === false) {
-        die(print_r(sqlsrv_errors(), true));
+        if ($user && password_verify($password, $user['contraseña'])) {
+            echo "Inicio de sesión exitoso.";
+            header("Location: ../superpagina.html"); // Redirige a la página deseada
+            exit;
+        } else {
+            echo "Correo o contraseña incorrectos.";
+        }
     }
-
-    // Verificar si hay coincidencias
-    if (sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC)) {
-        echo "Inicio de sesión exitoso.";
-        header('Location: ../supernidea.html ');
-    } else {
-        echo "Nombre de usuario o contraseña incorrectos.";
-    }
-
-    // Liberar recursos
-    sqlsrv_free_stmt($stmt);
+} catch (PDOException $e) {
+    echo "Error de conexión: " . $e->getMessage();
 }
-
-// Cerrar la conexión
-sqlsrv_close($conn);
 ?>
