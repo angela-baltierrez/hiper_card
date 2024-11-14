@@ -2,15 +2,22 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .header{
-    background-color: #7fffd4;
+    background-color: #2da82d;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 70px;
     padding: 10px;
+    color: #fff;
+}
+
+.header .titulo_pagina a{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
 }
 
 .header .logo img{ 
@@ -132,10 +139,12 @@
 }
 .imagen_click{
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .imagen-seleccionada {
-    border: 3px solid #7fffd4; /* Borde azul para la imagen seleccionada */
+    border: 1px solid #51b351; /* Borde azul para la imagen seleccionada */
+    border-radius: 5px;
 }
 
 .separacionminiproducto{
@@ -143,64 +152,72 @@
 }
 
 .para_la_foto{
-width: 550px;
-height: 550px;
-background-color: gray;
-display: flex;
-align-items: center;
-justify-content: center;
+    width: 550px;
+    height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 25px 5px rgba(40, 145, 40, 0.671);
 }
 
 .para_la_informacion{
     width: 550px;
     height: 550px;
-    margin-left: 50px;
-    background-color: rebeccapurple;
+    border-radius: 20px;
+    padding: 50px;
+    background-color: #fff;
+    color: #383838;
+    box-shadow: 0 5px 25px 5px rgba(0, 0, 0, 0.12);
+}
 
-    }
 .para_la_informacion_titulo{
-    margin-left: 10px;
-    font-size: 80px;
+    font-size: 40px;
 }
 
 .para_la_informacion_precio{
-    margin-top: 50px;
-    margin-left: 30px;
-    font-size: 50px;
+    margin-top: 20px;
+    font-size: 20px;
 }
 
 .button_comprar {
     background-color: white; 
-    border: 2px solid #04AA6D;
+    border: 1px solid #2da82d;
     border-radius: 10px;
-    color: black; 
+    color: #2da82d; 
     padding: 16px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
-    margin-top: 50px;
-    margin-left: 30px;
+    margin-top: 20px;
     margin-bottom: 20px;
     transition-duration: 0.4s;
     cursor: pointer;
     padding: 14px 50px; /*tamaño del boton*/
 }
 .button_comprar:hover{
-    background-color: #04AA6D;
+    background-color: #2da82d;
     color: white;
 }
 .descripcion_texto{
-    margin-left: 30px;
-    font-size: 40px;
+    font-size: 30px;
 }
 .para_la_informacion_descripcion{
-    margin-left: 30px;
+    margin-top: 20px;
     font-size: 20px;
 }
 
+.contenido_extra{
+    height: 300px;
+}
+.categoria_extra{
+    padding-top: 50px;
+    margin-left: 50px;
+}
+
 .footer {
+    margin-top: 85px;
     background-color: #d6d6d6;
     padding: 4rem 0;
     display: flex;

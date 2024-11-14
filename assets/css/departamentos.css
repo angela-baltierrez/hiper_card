@@ -6,7 +6,7 @@
 }
 
 .header{
-    background-color: #02cd02;
+    background-color: #2da82d;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,8 +20,8 @@
 }
 
 .header .titulo_pagina a{
-    color: black;
-text-decoration: none;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
 }
 
 .header .search_box{
