@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Flan</title>
     <link rel="stylesheet" href="../hiper_card/assets/css/detalle_producto.css">
 </head>
 <body>
@@ -42,8 +42,7 @@
              </ul>
          </li>
          
-         <li class="nav-link"><a href="perfil"></a>perfil</li>
-         <li class="nav-link"><a href="lista_productos"></a>carrito</li>
+
      </ul>  
  </nav>
  </div>
@@ -114,15 +113,15 @@
  <script>
     function cambiarFoto(element) {
         // Obtener la fuente de la imagen seleccionada
-        const nuevaFuente = element.src;
+        const nuevaFuente = element.src; //nuevafuente guarda la infor
         // Cambiar la imagen principal a la nueva fuente
-        document.getElementById('foto_seleccionada').src = nuevaFuente;
+        document.getElementById('foto_seleccionada').src = nuevaFuente; //sera la nueva foto grande
 
             // Remover la clase de borde de todas las miniaturas
-        const miniaturas = document.querySelectorAll('.paraminiproducto img');
+        const miniaturas = document.querySelectorAll('.paraminiproducto img'); 
         miniaturas.forEach(img => img.classList.remove('imagen-seleccionada'));
 
-        // Agregar la clase de borde a la imagen seleccionada
+        // Agregar el borde a la imagen seleccionada
         element.classList.add('imagen-seleccionada');
     }
     </script>   

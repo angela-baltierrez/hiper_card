@@ -6,7 +6,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta content="Codescandy" name="author">
-		<title>Homepage v1 - eCommerce HTML Template - FreshCart</title>
+		<title>Home</title>
 		<link href="./assets/libs/slick-carousel/slick/slick.css" rel="stylesheet" />
 		<link href="./assets/libs/slick-carousel/slick/slick-theme.css" rel="stylesheet" />
 		<link href="./assets/libs/tiny-slider/dist/tiny-slider.css" rel="stylesheet" />
@@ -54,12 +54,13 @@
 	<body>
 		<!-- navbar -->
 <div class="border-bottom" style="background-color: #2da82d;">
-
 	<div class="py-5">
 		<div class="container">
 			<div class="row w-100 align-items-center gx-lg-2 gx-0">
-				<div class="col-xxl-2 col-lg-3 col-md-6 col-5">
-					<a class="navbar-brand d-none d-lg-block" href="./index.html">
+				
+			<div class="col-xxl-2 col-lg-3 col-md-6 col-5">
+					
+					<a class="navbar-brand d-none d-lg-block" href="../hiper_card/superpagina.php">
 						<h1 style="color: #fff;">Hiper-card</h1>
 					</a>
 					<div class="d-flex justify-content-between w-100 d-lg-none">

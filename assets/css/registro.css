@@ -55,6 +55,35 @@ body{
     outline:none!important;
   }
 
+  input[type="password"]
+  
+  {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #e7e7e7;
+    border-width: 1px;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    outline:none!important;
+  }
+
+  input[type="email"]
+  
+  {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #e7e7e7;
+    border-width: 1px;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    outline:none!important;
+  }
+
+
   input:hover{
     border: 1px solid #0051ffbd;
   }

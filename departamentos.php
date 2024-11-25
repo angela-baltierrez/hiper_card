@@ -6,7 +6,7 @@ require_once ('../hiper_card/assets/php/conexion-departamentos.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Departamentos</title>
     <link rel="stylesheet" href="../hiper_card/assets/css/departamentos.css">
 </head>
 <body>
@@ -89,18 +89,17 @@ require_once ('../hiper_card/assets/php/conexion-departamentos.php');
          <li class="nav-link-departamentos">
              <a href="#">Departamentos
                  <span class="icono-lista">
- 
                  </span>
              </a>
              <ul class="nav-menu">
-                 <li class="nav-menu-opciones">snack</li>
-                 <li class="nav-menu-opciones">bebidas</li>
-                 <li class="nav-menu-opciones">carne</li>
+                 <li class="nav-menu-opciones"><a href="departamentos.php?categoria=snacks">Snack</a></li>
+                 <li class="nav-menu-opciones"><a href="departamentos.php?categoria=bebidas">Bebida</a></li>
+                 <li class="nav-menu-opciones"><a href="departamentos.php?categoria=carne">Carne</a></li>
+                 <li class="nav-menu-opciones"><a href="departamentos.php?categoria=fruta">Fruta</a></li>
+                 <li class="nav-menu-opciones"><a href="departamentos.php?categoria=limpieza">Limpieza</a></li>
+                 <li class="nav-menu-opciones"><a href="departamentos.php?categoria=lacteos">Lácteos</a></li>
              </ul>
          </li>
-         
-         <li class="nav-link"><a href="perfil"></a>perfil</li>
-         <li class="nav-link"><a href="lista_productos"></a>carrito</li>
      </ul>  
  </nav>
  </div>
@@ -117,7 +116,7 @@ require_once ('../hiper_card/assets/php/conexion-departamentos.php');
                 </a>
 
                 <!-- Separador -->
-                <?php if (isset($_GET['categoria'])): ?>
+                <?php if (isset($_GET['categoria'])): ?> <!-- isset verifica si existe la categoria -->
                     <span class="ruta_separador">
                         <svg fill="none" width="8" height="8" viewBox="0 0 16 16" class="ruta_flecha" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <use href="#nav-caret--right" xlink:href="#nav-caret--right"></use>
@@ -126,7 +125,7 @@ require_once ('../hiper_card/assets/php/conexion-departamentos.php');
 
                     <!-- Enlace a la categoría -->
                     <a href="" class="ruta_link">
-                        <?php echo htmlspecialchars($_GET['categoria']); ?>
+                        <?php echo htmlspecialchars($_GET['categoria']); ?> <!-- Es una función de PHP que convierte caracteres especiales a entidades HTML -->
                     </a>
                 <?php endif; ?>
             </div>
@@ -153,7 +152,7 @@ require_once ('../hiper_card/assets/php/conexion-departamentos.php');
         <p>
         <span class="cantidad_total">
             <?php if (isset($_GET['categoria'])): ?>
-                Productos encontrado: <?php echo $cantidad_productos; ?>
+                Productos encontrado: <?php echo $cantidad_productos; ?> <!-- llama el conteo de la conexion -->
             <?php endif; ?>
         </span>
         </p>
@@ -167,20 +166,22 @@ require_once ('../hiper_card/assets/php/conexion-departamentos.php');
     </div>
     <div class="productos_cartas_disponible">
     <?php if (!empty($productos)): ?>
-    <?php foreach ($productos as $producto): ?>
+    <?php foreach ($productos as $producto): ?>  <!-- bucle, va aparecer todos los productos de la base de datos como una carta -->
         <div class="columna">
             <div class="cuerpo_de_la_carta"> 
                 <div class="cuerpo_carta_imagen">
                     <!-- Enlace al detalle del producto -->
                     <a href="detalle_producto.php?id=<?php echo $producto['id_producto']; ?>">
-                        <!-- Imagen del producto (suponiendo que el nombre del archivo es el nombre del producto) -->
+                        <!-- Imagen del producto (suponiendo que el nombre del archivo es el nombre del producto) --> 
                         <img src="../hiper_card/assets/images/products/<?php echo strtolower(str_replace(' ', '', $producto['nombre_producto'])); ?>.jpg" 
-                             alt="<?php echo htmlspecialchars($producto['nombre_producto']); ?>">
+                             alt="<?php echo htmlspecialchars($producto['nombre_producto']); ?>"> <!-- strtolower pasar a hacer miniscular, str_replace se adapta si tiene espacio el nombre de prodct-->
                     </a>
                 </div>
                 <div class="departamentos_pertence">
                     <!-- Categoría del producto -->
-                    <a href=""><?php echo htmlspecialchars($producto['nombre_categoria']); ?></a>
+                    <a href="departamentos.php?categoria=<?php echo urlencode($producto['nombre_categoria']); ?>"> <!-- lo conviente en like -->
+                        <?php echo htmlspecialchars($producto['nombre_categoria']); ?>
+                    </a>
                 </div>
                 <h2 class="nombre_del_producto-h2"><?php echo htmlspecialchars($producto['nombre_producto']); ?></h2>
                 <p class="precio_producto-p">$<?php echo number_format($producto['precio'], 0, ',', '.'); ?></p>
@@ -266,22 +267,22 @@ require_once ('../hiper_card/assets/php/conexion-departamentos.php');
         <div class="cuadro_extra">
             <div class="categoria_extra">
                 <ul class="lista_categoria">
-                    <li>Leche</li>
-                    <li>Carne</li>
-                    <li>Bebidas</li>
-                    <li>Snack</li>
-                    <li>Limpieza</li>
-                    <li>Salsas</li>
+                    <li><a href="departamentos.php?categoria=snacks">Snack</a></li>
+                    <li><a href="departamentos.php?categoria=bebidas">Bebida</a></li>
+                    <li><a href="departamentos.php?categoria=carne">Carne</a></li>
+                    <li><a href="departamentos.php?categoria=fruta">Fruta</a></li>
+                    <li><a href="departamentos.php?categoria=limpieza">Limpieza</a></li>
+                    <li><a href="departamentos.php?categoria=lacteos">Lácteos</a></li>
                 </ul>
             </div>
             <div class="categoria_extra">
                 <ul class="lista_categoria">
-                    <li>Leche</li>
-                    <li>Carne</li>
-                    <li>Bebidas</li>
-                    <li>Snack</li>
-                    <li>Limpieza</li>
-                    <li>Salsas</li>
+                  <li><a href="departamentos.php?categoria=snacks">Snack</a></li>
+                  <li><a href="departamentos.php?categoria=bebidas">Bebida</a></li>
+                  <li><a href="departamentos.php?categoria=carne">Carne</a></li>
+                  <li><a href="departamentos.php?categoria=fruta">Fruta</a></li>
+                  <li><a href="departamentos.php?categoria=limpieza">Limpieza</a></li>
+                  <li><a href="departamentos.php?categoria=lacteos">Lácteos</a></li>
                 </ul>
             </div>
         </div>
