@@ -1,3 +1,6 @@
+<?php 
+require_once ('../hiper_card/assets/php/conexion-departamentos.php'); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +10,7 @@
     <link rel="stylesheet" href="../hiper_card/assets/css/departamentos.css">
 </head>
 <body>
+
     <header class="header">
      <div class="logo">
          <img src="../hiper_card/assets/images/hipercard logo.png" alt="logo de la marca">
@@ -101,21 +105,30 @@
  </nav>
  </div>
  <div class="direccion_departamentos">
-    <section class="direccion_departamentos_seleccion">
+ <section class="direccion_departamentos_seleccion">
         <div class="ruta">
             <div class="ruta_item">
-                <a href="/" class="ruta_link" aria-label="Home">
-                    <svg fill="none" width="26" height="26" viewBox="0 0 16 16" class="ruta_icono" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <!-- Enlace al inicio -->
+                <a href="../hiper_card/superpagina.php" class="ruta_link" aria-label="Home">
+                    <svg fill="none" width="26" height="14" viewBox="0 0 16 16" class="ruta_icono" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <use href="#nav-home" xlink:href="#nav-home"></use>
                     </svg>
-                    <a href="/home" class="ruta_link">home /</a>
+                    <span>home /</span>
                 </a>
-                <span class="ruta_separador">
-                    <svg fill="none" width="8" height="8" viewBox="0 0 16 16" class="ruta_flecha" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <use href="#nav-caret--right" xlink:href="#nav-caret--right"></use>
-                    </svg>
-                    <a href="/snack" class="ruta_link">snack</a>
-                </span>
+
+                <!-- Separador -->
+                <?php if (isset($_GET['categoria'])): ?>
+                    <span class="ruta_separador">
+                        <svg fill="none" width="8" height="8" viewBox="0 0 16 16" class="ruta_flecha" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <use href="#nav-caret--right" xlink:href="#nav-caret--right"></use>
+                        </svg>
+                    </span>
+
+                    <!-- Enlace a la categoría -->
+                    <a href="" class="ruta_link">
+                        <?php echo htmlspecialchars($_GET['categoria']); ?>
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
     </section>
@@ -124,45 +137,60 @@
 
 <aside class="aside">
 <div class="barra_departamentos">
-    <h2>Departamentos</h2>
-    <ul>
-        <li>snack</li>
-        <li>bebida</li>
-        <li>carne</li>
-        <li>fruta</li>
-        <li>limpieza</li>
-        <li>lacteos</li>
-    </ul>
-</div>
+        <h2>Departamentos</h2>
+        <ul>
+            <li><a href="departamentos.php?categoria=snacks">Snack</a></li>
+            <li><a href="departamentos.php?categoria=bebidas">Bebida</a></li>
+            <li><a href="departamentos.php?categoria=carne">Carne</a></li>
+            <li><a href="departamentos.php?categoria=fruta">Fruta</a></li>
+            <li><a href="departamentos.php?categoria=limpieza">Limpieza</a></li>
+            <li><a href="departamentos.php?categoria=lacteos">Lácteos</a></li>
+        </ul>
+    </div>
 </aside>
 <div class="ajustar_la_busquedar">
     <div class="producto_cantidad_resultado">
         <p>
-            <span class="cantidad_total">productos encontrados: 6</span>
+        <span class="cantidad_total">
+            <?php if (isset($_GET['categoria'])): ?>
+                Productos encontrado: <?php echo $cantidad_productos; ?>
+            <?php endif; ?>
+        </span>
         </p>
         <div>
-            <select class="forma_selecionar">
-                <option>precio más alto</option>
-                <option>precio mas bajo</option>
+            <select class="forma_selecionar" id="ordenarPrecios">
+                <option value="alto">precio más alto</option>
+                <option value="bajo">precio mas bajo</option>
                 <option>los mas relevantes</option>
             </select>
         </div>
-
     </div>
     <div class="productos_cartas_disponible">
+    <?php if (!empty($productos)): ?>
+    <?php foreach ($productos as $producto): ?>
         <div class="columna">
             <div class="cuerpo_de_la_carta"> 
                 <div class="cuerpo_carta_imagen">
-                    <a href="detalle_producto.html"><img src="../hiper_card/assets/images/products/pepas.jpg" alt="pepas"></a>
+                    <!-- Enlace al detalle del producto -->
+                    <a href="detalle_producto.php?id=<?php echo $producto['id_producto']; ?>">
+                        <!-- Imagen del producto (suponiendo que el nombre del archivo es el nombre del producto) -->
+                        <img src="../hiper_card/assets/images/products/<?php echo strtolower(str_replace(' ', '', $producto['nombre_producto'])); ?>.jpg" 
+                             alt="<?php echo htmlspecialchars($producto['nombre_producto']); ?>">
+                    </a>
                 </div>
                 <div class="departamentos_pertence">
-                    <a href="">snack</a>
+                    <!-- Categoría del producto -->
+                    <a href=""><?php echo htmlspecialchars($producto['nombre_categoria']); ?></a>
                 </div>
-                <h2 class="nombre_del_producto-h2">Pepas</h2>
-                <p class="precio_producto-p">$5000</p>
+                <h2 class="nombre_del_producto-h2"><?php echo htmlspecialchars($producto['nombre_producto']); ?></h2>
+                <p class="precio_producto-p">$<?php echo number_format($producto['precio'], 0, ',', '.'); ?></p>
                 <button class="btn-add-cart">Añadir al carrito</button>
             </div>
         </div>
+    <?php endforeach; ?>
+<?php else: ?>
+    <p>No hay productos disponibles.</p>
+<?php endif; ?>
         <div class="columna">
             <div class="cuerpo_de_la_carta"> 
                 <div class="cuerpo_carta_imagen">
@@ -259,6 +287,7 @@
         </div>
     </div>
 </footer>
+
  </body>
  <script src="../hiper_card/assets/js/departamentos.js"></script>
 

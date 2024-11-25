@@ -13,7 +13,7 @@
         <h3>Iniciar sesion </h3>
         <div class="form-group">
           <label for="email">Corre electronico:</label>
-          <input type="text" id="email" name="email" placeholder="Ingresa tu correo electronico" required>
+          <input type="email" id="email" name="email" placeholder="Ingresa tu correo electronico" required>
           <label for="password">Contraseña:</label>
           <input type="password" id="password" name="password" placeholder="Ingresa una contraseña" required>
           <a class="link" href="registro.html"> Si no tenes cuenta, haz click aquí </a>
