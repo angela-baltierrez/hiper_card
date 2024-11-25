@@ -10,10 +10,10 @@ class Cconexion {
         $servidor = 'DESKTOP-55DKBTU'; // Nombre del servidor o dirección IP
         
         try {
-            // Establecer conexión usando PDO y SQL Server
+            // Establecer conexión usando PDO y SQL Server, pdo se usa para interactual con la base
             $conn = new PDO("sqlsrv:Server=$servidor;Database=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $conn;
+            return $conn; //permite llamarlo en otras funciones
         } catch (PDOException $exp) {
             die("Error al conectar con la base de datos: " . $exp->getMessage());
         }
