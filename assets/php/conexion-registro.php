@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
 
         echo "Registro exitoso.";
-        header('Location: ../../superpagina.php');
+        header('Location: ../../departamentos.php');
         exit();
 
     } catch (PDOException $e) {

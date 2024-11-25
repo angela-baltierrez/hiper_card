@@ -19,7 +19,7 @@
           <input type="password" id="password" name="password" placeholder="Ingresa una contraseña" required>
           <label for="email">Correo electronico:</label>
           <input type="email" id="email" name="email" placeholder="Ingresa tu correo electronico" required>
-          <a class="link" href="login.html"> Si ya tenes cuenta, haz click aquí </a>
+          <a class="link" href="../hiper_card/login.php"> Si ya tenes cuenta, haz click aquí </a>
         </div>
       
         <div class="form-group button-class">

@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($user && password_verify($password, $user["contraseña"])) {
             echo "Inicio de sesión exitoso.";
-            header("Location: ../../superpagina.php");
+            header("Location: ../../departamentos.php");
             exit();
         } else {
             echo "Correo electrónico o contraseña incorrectos.";

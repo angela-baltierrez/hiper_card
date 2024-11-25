@@ -179,7 +179,7 @@ require_once ('../hiper_card/assets/php/conexion-departamentos.php');
                 </div>
                 <div class="departamentos_pertence">
                     <!-- Categoría del producto -->
-                    <a href="departamentos.php?categoria=<?php echo urlencode($producto['nombre_categoria']); ?>"> <!-- lo conviente en like -->
+                    <a href="departamentos.php?categoria=<?php echo urlencode($producto['nombre_categoria']); ?>"> <!-- lo conviente en link -->
                         <?php echo htmlspecialchars($producto['nombre_categoria']); ?>
                     </a>
                 </div>
