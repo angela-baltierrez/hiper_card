@@ -12,6 +12,7 @@ try {
     // la consulta inicia SQL
     $sql = "
         SELECT 
+            p.id_producto,
             p.nombre AS nombre_producto,   
             c.nombre AS nombre_categoria, 
             p.precio 
@@ -31,7 +32,7 @@ try {
         $query->bindParam(':categoria', $categoria, PDO::PARAM_STR);
     }
 
-    $query->execute(); // lo ejectuta
+    $query->execute(); // lo ejecuta
     $productos = $query->fetchAll(PDO::FETCH_ASSOC); // Obtener todos los resultados
     $cantidad_productos = count($productos); // Contar la cantidad de productos
 } catch (PDOException $e) {

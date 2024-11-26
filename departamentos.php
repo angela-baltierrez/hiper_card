@@ -92,12 +92,13 @@ require_once ('../hiper_card/assets/php/conexion-departamentos.php');
                  </span>
              </a>
              <ul class="nav-menu">
-                 <li class="nav-menu-opciones"><a href="departamentos.php?categoria=snacks">Snack</a></li>
-                 <li class="nav-menu-opciones"><a href="departamentos.php?categoria=bebidas">Bebida</a></li>
+                 <li class="nav-menu-opciones"><a href="departamentos.php?categoria=snacks">Snacks</a></li>
+                 <li class="nav-menu-opciones"><a href="departamentos.php?categoria=bebidas">Bebidas</a></li>
                  <li class="nav-menu-opciones"><a href="departamentos.php?categoria=carne">Carne</a></li>
                  <li class="nav-menu-opciones"><a href="departamentos.php?categoria=fruta">Fruta</a></li>
                  <li class="nav-menu-opciones"><a href="departamentos.php?categoria=limpieza">Limpieza</a></li>
                  <li class="nav-menu-opciones"><a href="departamentos.php?categoria=lacteos">Lácteos</a></li>
+                 <li class="nav-menu-opciones"><a href="departamentos.php?categoria=golosinas">Golosinas</a></li>
              </ul>
          </li>
      </ul>  
@@ -138,12 +139,13 @@ require_once ('../hiper_card/assets/php/conexion-departamentos.php');
 <div class="barra_departamentos">
         <h2>Departamentos</h2>
         <ul>
-            <li><a href="departamentos.php?categoria=snacks">Snack</a></li>
-            <li><a href="departamentos.php?categoria=bebidas">Bebida</a></li>
+            <li><a href="departamentos.php?categoria=snacks">Snacks</a></li>
+            <li><a href="departamentos.php?categoria=bebidas">Bebidas</a></li>
             <li><a href="departamentos.php?categoria=carne">Carne</a></li>
             <li><a href="departamentos.php?categoria=fruta">Fruta</a></li>
             <li><a href="departamentos.php?categoria=limpieza">Limpieza</a></li>
             <li><a href="departamentos.php?categoria=lacteos">Lácteos</a></li>
+            <li><a href="departamentos.php?categoria=golosinas">Golosinas</a></li>
         </ul>
     </div>
 </aside>
@@ -184,7 +186,7 @@ require_once ('../hiper_card/assets/php/conexion-departamentos.php');
                     </a>
                 </div>
                 <h2 class="nombre_del_producto-h2"><?php echo htmlspecialchars($producto['nombre_producto']); ?></h2>
-                <p class="precio_producto-p">$<?php echo number_format($producto['precio'], 0, ',', '.'); ?></p>
+                <p class="precio_producto-p">$<?php echo $producto['precio']; ?></p>
                 <button class="btn-add-cart">Añadir al carrito</button>
             </div>
         </div>
@@ -192,71 +194,6 @@ require_once ('../hiper_card/assets/php/conexion-departamentos.php');
 <?php else: ?>
     <p>No hay productos disponibles.</p>
 <?php endif; ?>
-        <div class="columna">
-            <div class="cuerpo_de_la_carta"> 
-                <div class="cuerpo_carta_imagen">
-                    <a href="detalle_producto.html"><img src="../hiper_card/assets/images/products/pepitosWhite.jpg" alt="pepitos"></a>
-                </div>
-                <div class="departamentos_pertence">
-                    <a href="">snack</a>
-                </div>
-                <h2 class="nombre_del_producto-h2">Pepitos White </h2>
-                <p class="precio_producto-p">$2000</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
-        <div class="columna">
-            <div class="cuerpo_de_la_carta"> 
-                <div class="cuerpo_carta_imagen">
-                    <a href="detalle_producto.html"><img src="../hiper_card/assets/images/products/DonSaturBizcochoNegrito.jpg" alt="DonSaturBizcochoNegrito"></a>
-                </div>
-                <div class="departamentos_pertence">
-                    <a href="">snack</a>
-                </div>
-                <h2 class="nombre_del_producto-h2">Don Satur Bizcocho Negrito</h2>
-                <p class="precio_producto-p">$900</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
-        <div class="columna">
-            <div class="cuerpo_de_la_carta"> 
-                <div class="cuerpo_carta_imagen">
-                    <a href="detalle_producto.html"><img src="../hiper_card/assets/images/products/TortitasBlack.jpg" alt="TortitasBlack"></a>
-                </div>
-                <div class="departamentos_pertence">
-                    <a href="detalle_producto.html">snack</a>
-                </div>
-                <h2 class="nombre_del_producto-h2">Tortitas Negras</h2>
-                <p class="precio_producto-p">$1300</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
-        <div class="columna">
-            <div class="cuerpo_de_la_carta"> 
-                <div class="cuerpo_carta_imagen">
-                    <a href="detalle_producto.html"><img src="../hiper_card/assets/images/products/ChocolinasNegro.png" alt="ChocolinasNegro"></a>
-                </div>
-                <div class="departamentos_pertence">
-                    <a href="">snack</a>
-                </div>
-                <h2 class="nombre_del_producto-h2">Chocolinas Negro</h2>
-                <p class="precio_producto-p">$1750</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
-        <div class="columna">
-            <div class="cuerpo_de_la_carta"> 
-                <div class="cuerpo_carta_imagen">
-                    <a href="detalle_producto.html"><img src="../hiper_card/assets/images/products/9DeOroCaraSucia.png" alt="9DeOroCaraSucia"></a>
-                </div>
-                <div class="departamentos_pertence">
-                    <a href="">snack</a>
-                </div>
-                <h2 class="nombre_del_producto-h2">9 De Julio Cara Sucia </h2>
-                <p class="precio_producto-p">$680</p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
     </div>
     
 </div>
@@ -267,12 +204,13 @@ require_once ('../hiper_card/assets/php/conexion-departamentos.php');
         <div class="cuadro_extra">
             <div class="categoria_extra">
                 <ul class="lista_categoria">
-                    <li><a href="departamentos.php?categoria=snacks">Snack</a></li>
-                    <li><a href="departamentos.php?categoria=bebidas">Bebida</a></li>
+                    <li><a href="departamentos.php?categoria=snacks">Snacks</a></li>
+                    <li><a href="departamentos.php?categoria=bebidas">Bebidas</a></li>
                     <li><a href="departamentos.php?categoria=carne">Carne</a></li>
                     <li><a href="departamentos.php?categoria=fruta">Fruta</a></li>
                     <li><a href="departamentos.php?categoria=limpieza">Limpieza</a></li>
                     <li><a href="departamentos.php?categoria=lacteos">Lácteos</a></li>
+                    <li><a href="departamentos.php?categoria=golosinas">Golosinas</a></li>
                 </ul>
             </div>
             <div class="categoria_extra">
@@ -283,6 +221,7 @@ require_once ('../hiper_card/assets/php/conexion-departamentos.php');
                   <li><a href="departamentos.php?categoria=fruta">Fruta</a></li>
                   <li><a href="departamentos.php?categoria=limpieza">Limpieza</a></li>
                   <li><a href="departamentos.php?categoria=lacteos">Lácteos</a></li>
+                  <li><a href="departamentos.php?categoria=golosinas">Golosinas</a></li>
                 </ul>
             </div>
         </div>

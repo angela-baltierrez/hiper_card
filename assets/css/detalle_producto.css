@@ -117,13 +117,47 @@
     display: block;
 }
 
-.dirreciones_de_departamentos{
-    display: flex;
-    margin-left: 50px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+/* Sección de direccion_departamentos */
+.direccion_departamentos {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ddd;
 }
 
+.direccion_departamentos_seleccion {
+    display: flex;
+    align-items: center;
+}
+
+.ruta {
+    display: flex;
+    align-items: center;
+}
+
+.ruta_item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.ruta_link {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 14px;
+}
+
+.ruta_separador {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: #888;
+}
+
+/* Iconos y flechas */
+.ruta_icono,
+.ruta_flecha {
+    fill: currentColor;
+}
 .paraproducto{
     display: flex;
     justify-content: space-around;    
