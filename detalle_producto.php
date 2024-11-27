@@ -16,14 +16,13 @@ try {
             p.nombre AS nombre_producto,
             c.nombre AS nombre_categoria,
             p.precio,
-            p.descripcion,
-            p.stock
+            p.descripcion
         FROM Productos p
         INNER JOIN Categorias c ON p.id_categoria = c.id_categoria
         WHERE p.id_producto = :id_producto
     ";
 
-    $query = $conn->prepare($sql);
+    $query = $conn->prepare($sql); //prepara
     $query->bindParam(':id_producto', $id_producto, PDO::PARAM_INT);
     $query->execute();
     
@@ -35,7 +34,6 @@ try {
         throw new Exception("Producto no encontrado.");
     }
 
-
     // Generar el nombre base del producto (sin espacios, en minúsculas)
     $nombre_base = strtolower(str_replace(' ', '', $producto['nombre_producto']));
 
@@ -44,7 +42,7 @@ try {
 
     // Buscar imágenes adicionales dinámicamente
     $imagenes_adicionales = [];
-    for ($i = 2; $i <= 4; $i++) { // Máximo de 3 imágenes adicionales
+    for ($i = 2; $i <= 4; $i++) { // Máximo de 4 imágenes adicionales
         $imagen_path = $directorio . $nombre_base . $i . ".jpg";
         if (file_exists($imagen_path)) {
             $imagenes_adicionales[] = $nombre_base . $i . ".jpg";
@@ -157,7 +155,7 @@ try {
                          width="100px" height="100px" 
                          onclick="cambiarFoto(this)">
                 </div>
-                <?php foreach ($imagenes_adicionales as $imagen): ?>
+                <?php foreach ($imagenes_adicionales as $imagen): ?> <!-- acá hara un bucle de todas mini imagenes que tenga ese productos -->
                     <div class="separacionminiproducto">
                         <img class="imagen_click" 
                              src="../hiper_card/assets/images/products/<?php echo $imagen; ?>" 
