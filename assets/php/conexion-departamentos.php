@@ -24,6 +24,17 @@ try {
     if ($categoria) {
         $sql .= " WHERE c.nombre = :categoria";
     }
+
+    // Agregar orden por precio si se ha seleccionado
+$orden = isset($_GET['orden']) ? $_GET['orden'] : null;
+
+if ($orden === 'alto') {
+    $sql .= " ORDER BY p.precio DESC";
+} elseif ($orden === 'bajo') {
+    $sql .= " ORDER BY p.precio ASC";
+}
+
+
     //prepara la consulta SQL para su ejecución
     $query = $conn->prepare($sql);
 
@@ -32,6 +43,7 @@ try {
         $query->bindParam(':categoria', $categoria, PDO::PARAM_STR);
     }
 
+    
     $query->execute(); // lo ejecuta
     $productos = $query->fetchAll(PDO::FETCH_ASSOC); // Obtener todos los resultados
     $cantidad_productos = count($productos); // Contar la cantidad de productos

@@ -153,50 +153,63 @@ require_once ('../hiper_card/assets/php/conexion-departamentos.php');
     <div class="producto_cantidad_resultado">
         <p>
         <span class="cantidad_total">
-            <?php if (isset($_GET['categoria'])): ?>
-                Productos encontrado: <?php echo $cantidad_productos; ?> <!-- llama el conteo de la conexion -->
+            <?php if (isset($cantidad_productos)): ?>
+                Productos encontrados: <?php echo $cantidad_productos; ?>
             <?php endif; ?>
         </span>
         </p>
         <div>
             <select class="forma_selecionar" id="ordenarPrecios">
-                <option value="alto">precio más alto</option>
-                <option value="bajo">precio mas bajo</option>
-                <option>los mas relevantes</option>
+                <option value="alto" <?php echo (isset($_GET['orden']) && $_GET['orden'] === 'alto') ? 'selected' : ''; ?>>Precio más alto</option>
+                <option value="bajo" <?php echo (isset($_GET['orden']) && $_GET['orden'] === 'bajo') ? 'selected' : ''; ?>>Precio más bajo</option>
+                <option value="" <?php echo (!isset($_GET['orden']) || $_GET['orden'] == '') ? 'selected' : ''; ?>>Los más relevantes</option>
             </select>
         </div>
     </div>
+
     <div class="productos_cartas_disponible">
-    <?php if (!empty($productos)): ?>
-    <?php foreach ($productos as $producto): ?>  <!-- bucle, va aparecer todos los productos de la base de datos como una carta -->
-        <div class="columna">
-            <div class="cuerpo_de_la_carta"> 
-                <div class="cuerpo_carta_imagen">
-                    <!-- Enlace al detalle del producto -->
-                    <a href="detalle_producto.php?id=<?php echo $producto['id_producto']; ?>">
-                        <!-- Imagen del producto (suponiendo que el nombre del archivo es el nombre del producto) --> 
-                        <img src="../hiper_card/assets/images/products/<?php echo strtolower(str_replace(' ', '', $producto['nombre_producto'])); ?>.jpg" 
-                             alt="<?php echo htmlspecialchars($producto['nombre_producto']); ?>"> <!-- strtolower pasar a hacer miniscular, str_replace se adapta si tiene espacio el nombre de prodct-->
-                    </a>
+        <?php if (!empty($productos)): ?>
+            <?php foreach ($productos as $producto): ?>
+                <div class="columna">
+                    <div class="cuerpo_de_la_carta"> 
+                        <div class="cuerpo_carta_imagen">
+                            <a href="detalle_producto.php?id=<?php echo $producto['id_producto']; ?>">
+                                <img src="../hiper_card/assets/images/products/<?php echo strtolower(str_replace(' ', '', $producto['nombre_producto'])); ?>.jpg" 
+                                    alt="<?php echo htmlspecialchars($producto['nombre_producto']); ?>">
+                            </a>
+                        </div>
+                        <div class="departamentos_pertence">
+                            <a href="departamentos.php?categoria=<?php echo urlencode($producto['nombre_categoria']); ?>">
+                                <?php echo htmlspecialchars($producto['nombre_categoria']); ?>
+                            </a>
+                        </div>
+                        <h2 class="nombre_del_producto-h2"><?php echo htmlspecialchars($producto['nombre_producto']); ?></h2>
+                        <p class="precio_producto-p">$<?php echo $producto['precio']; ?></p>
+                        <button class="btn-add-cart">Añadir al carrito</button>
+                    </div>
                 </div>
-                <div class="departamentos_pertence">
-                    <!-- Categoría del producto -->
-                    <a href="departamentos.php?categoria=<?php echo urlencode($producto['nombre_categoria']); ?>"> <!-- lo conviente en link -->
-                        <?php echo htmlspecialchars($producto['nombre_categoria']); ?>
-                    </a>
-                </div>
-                <h2 class="nombre_del_producto-h2"><?php echo htmlspecialchars($producto['nombre_producto']); ?></h2>
-                <p class="precio_producto-p">$<?php echo $producto['precio']; ?></p>
-                <button class="btn-add-cart">Añadir al carrito</button>
-            </div>
-        </div>
-    <?php endforeach; ?>
-<?php else: ?>
-    <p>No hay productos disponibles.</p>
-<?php endif; ?>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No hay productos disponibles.</p>
+        <?php endif; ?>
     </div>
-    
 </div>
+
+<!-- JavaScript para cambiar el filtro -->
+<script>
+document.getElementById('ordenarPrecios').addEventListener('change', function () {
+    const valor = this.value;
+    const urlParams = new URLSearchParams(window.location.search);
+
+    if (valor) {
+        urlParams.set('orden', valor);
+    } else {
+        urlParams.delete('orden');
+    }
+
+    window.location.search = urlParams.toString();
+});
+</script>
 </div>
 <footer class="footer">
     <div class="contenido_extra">
