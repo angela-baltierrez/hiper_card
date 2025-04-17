@@ -6,10 +6,12 @@ try {
     // Establecer conexión
     $conn = Cconexion::ConexionBD();
 
-    // Obtener la categoría seleccionada desde la URL
+    // Obtener parámetros desde la URL
     $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : null;
+    $busqueda = isset($_GET['busqueda']) ? $_GET['busqueda'] : null; //nuevo px
+    $orden = isset($_GET['orden']) ? $_GET['orden'] : null;
 
-    // la consulta inicia SQL
+    // Construir la consulta base
     $sql = "
         SELECT 
             p.id_producto,
@@ -18,35 +20,56 @@ try {
             p.precio 
         FROM Productos p
         INNER JOIN Categorias c ON p.id_categoria = c.id_categoria
-    "; // p = productos y c = categorias
+    ";
 
-    // Filtrar por categoría si se proporciona
+    // Condiciones (nuevo px)
+    $condiciones = [];
+    $parametros = [];
+
     if ($categoria) {
-        $sql .= " WHERE c.nombre = :categoria";
+        $condiciones[] = "c.nombre = :categoria";
+        $parametros[':categoria'] = $categoria;
     }
 
-    // Agregar orden por precio si se ha seleccionado
-$orden = isset($_GET['orden']) ? $_GET['orden'] : null;
+    if ($busqueda) {
+        $condiciones[] = "p.nombre LIKE :busqueda";
+        $parametros[':busqueda'] = '%' . $busqueda . '%';
+    }
 
-if ($orden === 'alto') {
-    $sql .= " ORDER BY p.precio DESC";
-} elseif ($orden === 'bajo') {
-    $sql .= " ORDER BY p.precio ASC";
-}
+    if (!empty($condiciones)) {
+        $sql .= " WHERE " . implode(" AND ", $condiciones);
+    }
+    //-----------------------------------------------------
+    // Ordenar por precio si se ha seleccionado
+    if ($orden === 'alto') {
+        $sql .= " ORDER BY p.precio DESC";
+    } elseif ($orden === 'bajo') {
+        $sql .= " ORDER BY p.precio ASC";
+    }
 
-
-    //prepara la consulta SQL para su ejecución
+    // Preparar y ejecutar la consulta
     $query = $conn->prepare($sql);
-
-    // pasar el valor de la categoría a la consulta si es nece
-    if ($categoria) {
-        $query->bindParam(':categoria', $categoria, PDO::PARAM_STR);
+    foreach ($parametros as $clave => $valor) {
+        $query->bindValue($clave, $valor);
     }
+    $query->execute();
+    $productos = $query->fetchAll(PDO::FETCH_ASSOC);
 
-    
-    $query->execute(); // lo ejecuta
-    $productos = $query->fetchAll(PDO::FETCH_ASSOC); // Obtener todos los resultados
-    $cantidad_productos = count($productos); // Contar la cantidad de productos
+    // Si hay una búsqueda, calcular la similitud y ordenar //nuevo PX
+    if ($busqueda && !empty($productos)) {
+        foreach ($productos as &$producto) {
+            similar_text(strtolower($busqueda), strtolower($producto['nombre_producto']), $porcentaje);
+            $producto['similitud'] = $porcentaje;
+        }
+        unset($producto); // Romper la referencia
+
+        // Ordenar los productos por similitud descendente
+        usort($productos, function ($a, $b) {
+            return $b['similitud'] <=> $a['similitud'];
+        });
+    }
+   //------------------------------------------------
+    $cantidad_productos = count($productos);
 } catch (PDOException $e) {
     die("Error al obtener los productos: " . $e->getMessage());
 }

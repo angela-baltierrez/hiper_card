@@ -18,10 +18,11 @@ require_once ('../hiper_card/assets/php/conexion-departamentos.php');
      <div class="titulo_pagina">
         <a href="superpagina.html"><h2>Hiper-card</h2></a>
      </div>
-     <div class="search_box">
-         <input class="" type="search" placeholder="Search for product" aria-label="Search">
-         <button class="" type="submit">Search</button>
-     </div>
+     
+<form class="search_box" method="get" action="departamentos.php"> <!-- nuevo PX-->
+    <input type="search" name="busqueda" placeholder="Buscar producto" aria-label="Buscar">
+    <button type="submit">Buscar</button>
+</form>
      <div class="container-icon">
         <div class="container-cart-icon">
             <svg
@@ -96,7 +97,6 @@ require_once ('../hiper_card/assets/php/conexion-departamentos.php');
                  <li class="nav-menu-opciones"><a href="departamentos.php?categoria=bebidas">Bebidas</a></li>
                  <li class="nav-menu-opciones"><a href="departamentos.php?categoria=carne">Carne</a></li>
                  <li class="nav-menu-opciones"><a href="departamentos.php?categoria=fruta">Fruta</a></li>
-                 <li class="nav-menu-opciones"><a href="departamentos.php?categoria=limpieza">Limpieza</a></li>
                  <li class="nav-menu-opciones"><a href="departamentos.php?categoria=lacteos">Lácteos</a></li>
                  <li class="nav-menu-opciones"><a href="departamentos.php?categoria=golosinas">Golosinas</a></li>
              </ul>
@@ -143,7 +143,6 @@ require_once ('../hiper_card/assets/php/conexion-departamentos.php');
             <li><a href="departamentos.php?categoria=bebidas">Bebidas</a></li>
             <li><a href="departamentos.php?categoria=carne">Carne</a></li>
             <li><a href="departamentos.php?categoria=fruta">Fruta</a></li>
-            <li><a href="departamentos.php?categoria=limpieza">Limpieza</a></li>
             <li><a href="departamentos.php?categoria=lacteos">Lácteos</a></li>
             <li><a href="departamentos.php?categoria=golosinas">Golosinas</a></li>
         </ul>
@@ -221,7 +220,7 @@ document.getElementById('ordenarPrecios').addEventListener('change', function ()
                     <li><a href="departamentos.php?categoria=bebidas">Bebidas</a></li>
                     <li><a href="departamentos.php?categoria=carne">Carne</a></li>
                     <li><a href="departamentos.php?categoria=fruta">Fruta</a></li>
-                    <li><a href="departamentos.php?categoria=limpieza">Limpieza</a></li>
+
                     <li><a href="departamentos.php?categoria=lacteos">Lácteos</a></li>
                     <li><a href="departamentos.php?categoria=golosinas">Golosinas</a></li>
                 </ul>
@@ -232,7 +231,7 @@ document.getElementById('ordenarPrecios').addEventListener('change', function ()
                   <li><a href="departamentos.php?categoria=bebidas">Bebida</a></li>
                   <li><a href="departamentos.php?categoria=carne">Carne</a></li>
                   <li><a href="departamentos.php?categoria=fruta">Fruta</a></li>
-                  <li><a href="departamentos.php?categoria=limpieza">Limpieza</a></li>
+
                   <li><a href="departamentos.php?categoria=lacteos">Lácteos</a></li>
                   <li><a href="departamentos.php?categoria=golosinas">Golosinas</a></li>
                 </ul>
