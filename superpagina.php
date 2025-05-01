@@ -10,6 +10,9 @@
 		<link href="./assets/libs/slick-carousel/slick/slick.css" rel="stylesheet" />
 		<link href="./assets/libs/slick-carousel/slick/slick-theme.css" rel="stylesheet" />
 		<link href="./assets/libs/tiny-slider/dist/tiny-slider.css" rel="stylesheet" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 
 		<!-- Favicon icon-->
@@ -52,104 +55,11 @@
 	</head>
 
 	<body>
-		<!-- navbar -->
-<div class="border-bottom" style="background-color: #2da82d;">
-	<div class="py-5">
-		<div class="container">
-			<div class="row w-100 align-items-center gx-lg-2 gx-0">
-				
-			<div class="col-xxl-2 col-lg-3 col-md-6 col-5">
-					
-					<a class="navbar-brand d-none d-lg-block" href="../hiper_card/superpagina.php">
-						<h1 style="color: #fff;">Hiper-card</h1>
-					</a>
-					<div class="d-flex justify-content-between w-100 d-lg-none">
-						<a class="navbar-brand" href="./index.html">
-							<img src="./assets/images/logo/freshcart-logo.svg" alt="eCommerce HTML Template" />
-						</a>
-					</div>
-				</div>
-				<div class="col-lg-2 col-xxl-2 text-end col-md-6 col-7">
-					<div class="list-inline">
-						<div class="list-inline-item me-5">
-							<a href="../hiper_card/login.php" class="text-muted"  data-bs-target="#userModal" style= "padding: 0 0 0 700px">
-								<svg
-									style="color: #fff;"
-									xmlns="http://www.w3.org/2000/svg"
-									width="20"
-									height="20"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="2"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									class="feather feather-user"
-								>
-									<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-									<circle cx="12" cy="7" r="4"></circle>
-								</svg>
-							</a>
-						</div>
-
-						<div class="list-inline-item d-inline-block d-lg-none">
-							<!-- Button -->
-							<button class="navbar-toggler collapsed" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbar-default" aria-controls="navbar-default" aria-label="Toggle navigation">
-								<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-text-indent-left text-primary" viewBox="0 0 16 16">
-									<path
-										d="M2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm.646 2.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L4.293 8 2.646 6.354a.5.5 0 0 1 0-.708zM7 6.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
-									/>
-								</svg>
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<nav class="navbar navbar-expand-lg navbar-light navbar-default py-0 pb-lg-4" aria-label="Offcanvas navbar large">
-		<div class="container">
-			<div class="offcanvas offcanvas-start" tabindex="-1" id="navbar-default" aria-labelledby="navbar-defaultLabel">
-				<div class="offcanvas-header pb-1">
-					<a href="./index.html"><img src="./assets/images/logo/freshcart-logo.svg" alt="eCommerce HTML Template" /></a>
-					<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-				</div>
-				<div class="offcanvas-body">
-					<div class="d-block d-lg-none mb-4">
-						<form action="#">
-							<div class="input-group">
-								<input class="form-control rounded" type="search" placeholder="Buscar productos" />
-								<span  class="input-group-append">
-									<button class="btn bg-white border border-start-0 ms-n10 rounded-0 rounded-end" type="button">
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											width="16"
-											height="16"
-											viewBox="0 0 24 24"
-											fill="none"
-											stroke="currentColor"
-											stroke-width="2"
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											class="feather feather-search"
-										>
-											<circle cx="11" cy="11" r="8"></circle>
-											<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-										</svg>
-									</button>
-								</span>
-							</div>
-						</form>
-						<div class="mt-2">
-							<button type="button" class="btn btn-outline-gray-400 text-muted w-100" data-bs-toggle="modal" data-bs-target="#locationModal">
-								<i class="feather-icon icon-map-pin me-2"></i>
-								Pick Location
-							</button>
-						</div>
-					</div>
-					<div class="dropdown me-3 d-none d-lg-block">
-						<button  style="background-color: #fff; color: #2da82d;" class="btn btn-primary px-6" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+					<nav class="navbar navbar-light" style="background-color:rgb(37, 197, 51);">
+  <div class="container-fluid">
+    <a class="navbar-brand">H</a>
+	<div class="dropdown me-3 d-none d-lg-block">
+						<button  style="background-color: #fff; color: #2da82d; margin-left: -350px;" class="btn btn-primary px-6" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 							<span class="me-1">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -180,12 +90,15 @@
     				    <li><a class="dropdown-item" href="departamentos.php?categoria=carne">carne y pollo</a></li>
 						</ul>
 					</div>
+    <form class="d-flex">
+		
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+	
+    </form>
+  </div>
+</nav>
 
-				</div>
-			</div>
-		</div>
-	</nav>
-</div>
 <!-- Modal -->
 <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered">

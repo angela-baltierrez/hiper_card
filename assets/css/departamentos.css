@@ -4,7 +4,27 @@
     padding: 0;
     font-family: Inter, sans-serif
 }
-
+.button{
+    background-color: white; 
+    border: 1px solid #2da82d;
+    border-radius: 10px;
+    color: #2da82d; 
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    padding: 14px 50px; /*tamaño del boton*/
+}
+.button:hover{
+    background-color: #2da82d;
+    color: white;
+}
 .header{
     background-color: #2da82d;
     display: flex;
