@@ -115,7 +115,7 @@
 }
 
 .nav-opciones-categorias .nav-link:hover{
-    background-color: green;
+    background-color: rgb(21, 184, 21);
     color: white;
     border-radius: 5px;
 }

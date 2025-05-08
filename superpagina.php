@@ -1,4 +1,6 @@
-
+<?php 
+require_once ('../hiper_card/assets/php/conexion-departamentos.php'); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -11,6 +13,7 @@
 		<link href="./assets/libs/slick-carousel/slick/slick-theme.css" rel="stylesheet" />
 		<link href="./assets/libs/tiny-slider/dist/tiny-slider.css" rel="stylesheet" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="stylesheet" href="../hiper_card/assets/css/departamentos.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
@@ -57,7 +60,7 @@
 	<body>
 					<nav class="navbar navbar-light" style="background-color:rgb(37, 197, 51);">
   <div class="container-fluid">
-    <a class="navbar-brand">H</a>
+    <a class="navbar-brand">Hiper-Card</a>
 	<div class="dropdown me-3 d-none d-lg-block">
 						<button  style="background-color: #fff; color: #2da82d; margin-left: -350px;" class="btn btn-primary px-6" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 							<span class="me-1">
@@ -507,236 +510,38 @@
 						</div>
 					</div>
 
-					<div class="row g-4 row-cols-lg-5 row-cols-2 row-cols-md-3">
-						<div class="col">
-							<div class="card card-product">
-								<div class="card-body">
-									<div class="text-center position-relative">
-										<div class="position-absolute top-0 start-0">
-											<span class="badge bg-danger">Sale</span>
-										</div>
-										<a href="#!"><img src="assets/images/products/product-img-1.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
 
-										
-									</div>
-									<div class="text-small mb-1">
-										<a href="#!" class="text-decoration-none text-muted"><small>Snack & Munchies</small></a>
-									</div>
-									<h2 class="fs-6"><a href="./pages/shop-single.html" class="text-inherit text-decoration-none">Haldiram's Sev Bhujia</a></h2>
+					<div class="productos_cartas_disponible">
+        <?php if (!empty($productos)): ?>
+            <?php foreach ($productos as $producto): ?>
+                <div class="columna">
+                    <div class="cuerpo_de_la_carta"> 
+                        <div class="cuerpo_carta_imagen">
+                            <a href="detalle_producto.php?id=<?php echo $producto['id_producto']; ?>">
+                                <img src="../hiper_card/assets/images/products/<?php echo strtolower(str_replace(' ', '', $producto['nombre_producto'])); ?>.jpg" 
+                                    alt="<?php echo htmlspecialchars($producto['nombre_producto']); ?>">
+                            </a>
+                        </div>
+                        <div class="departamentos_pertence">
+                            <a href="departamentos.php?categoria=<?php echo urlencode($producto['nombre_categoria']); ?>">
+                                <?php echo htmlspecialchars($producto['nombre_categoria']); ?>
+                            </a>
+                        </div>
+                        <h2 class="nombre_del_producto-h2"><?php echo htmlspecialchars($producto['nombre_producto']); ?></h2>
+                        <p class="precio_producto-p">$<?php echo $producto['precio']; ?></p>
+						<a href="registro.php">
+                        <button class="btn-add-cart">Comprar</button>
+			</a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No hay productos disponibles.</p>
+        <?php endif; ?>
+    </div>
 
-									<div class="d-flex justify-content-between align-items-center mt-3">
-										<div>
-											<span class="text-dark">$18</span>
-											<span class="text-decoration-line-through text-muted">$24</span>
-										</div>
-									
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col">
-							<div class="card card-product">
-								<div class="card-body">
-									<div class="text-center position-relative">
-										<div class="position-absolute top-0 start-0">
-											<span class="badge bg-success">14%</span>
-										</div>
-										<a href="./pages/shop-single.html"><img src="assets/images/products/product-img-2.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
-									
-									</div>
-									<div class="text-small mb-1">
-										<a href="#!" class="text-decoration-none text-muted"><small>Bakery & Biscuits</small></a>
-									</div>
-									<h2 class="fs-6"><a href="./pages/shop-single.html" class="text-inherit text-decoration-none">NutriChoice Digestive</a></h2>
 
-									<div class="d-flex justify-content-between align-items-center mt-3">
-										<div><span class="text-dark">$24</span></div>
-										
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col">
-							<div class="card card-product">
-								<div class="card-body">
-									<div class="text-center position-relative">
-										<a href="./pages/shop-single.html"><img src="assets/images/products/product-img-3.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
-										
-									</div>
-									<div class="text-small mb-1">
-										<a href="#!" class="text-decoration-none text-muted"><small>Bakery & Biscuits</small></a>
-									</div>
-									<h2 class="fs-6"><a href="./pages/shop-single.html" class="text-inherit text-decoration-none">Cadbury 5 Star Chocolate</a></h2>
 
-									<div class="d-flex justify-content-between align-items-center mt-3">
-										<div>
-											<span class="text-dark">$32</span>
-											<span class="text-decoration-line-through text-muted">$35</span>
-										</div>
-										
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col">
-							<div class="card card-product">
-								<div class="card-body">
-									<div class="text-center position-relative">
-										<a href="./pages/shop-single.html"><img src="assets/images/products/product-img-4.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
-									
-										<div class="position-absolute top-0 start-0">
-											<span class="badge bg-danger">Hot</span>
-										</div>
-									</div>
-									<div class="text-small mb-1">
-										<a href="#!" class="text-decoration-none text-muted"><small>Snack & Munchies</small></a>
-									</div>
-									<h2 class="fs-6"><a href="./pages/shop-single.html" class="text-inherit text-decoration-none">Onion Flavour Potato</a></h2>
-									<div class="d-flex justify-content-between align-items-center mt-3">
-										<div>
-											<span class="text-dark">$3</span>
-											<span class="text-decoration-line-through text-muted">$5</span>
-										</div>
-										
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col">
-							<div class="card card-product">
-								<div class="card-body">
-									<div class="text-center position-relative">
-										<a href="./pages/shop-single.html"><img src="assets/images/products/product-img-5.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
-										
-									</div>
-									<div class="text-small mb-1">
-										<a href="#!" class="text-decoration-none text-muted"><small>Instant Food</small></a>
-									</div>
-									<h2 class="fs-6"><a href="./pages/shop-single.html" class="text-inherit text-decoration-none">Salted Instant Popcorn</a></h2>
-
-									<div class="d-flex justify-content-between mt-4">
-										<div>
-											<span class="text-dark">$13</span>
-											<span class="text-decoration-line-through text-muted">$18</span>
-										</div>
-									
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col">
-							<div class="card card-product">
-								<div class="card-body">
-									<div class="text-center position-relative">
-										<div class="position-absolute top-0 start-0">
-											<span class="badge bg-danger">Sale</span>
-										</div>
-										<a href="#!"><img src="assets/images/products/product-img-6.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
-										
-									</div>
-									<div class="text-small mb-1">
-										<a href="#!" class="text-decoration-none text-muted"><small>Dairy, Bread & Eggs</small></a>
-									</div>
-									<h2 class="fs-6"><a href="./pages/shop-single.html" class="text-inherit text-decoration-none">Blueberry Greek Yogurt</a></h2>
-
-									<div class="d-flex justify-content-between align-items-center mt-3">
-										<div>
-											<span class="text-dark">$18</span>
-											<span class="text-decoration-line-through text-muted">$24</span>
-										</div>
-										
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col">
-							<div class="card card-product">
-								<div class="card-body">
-									<div class="text-center position-relative">
-										<a href="./pages/shop-single.html"><img src="assets/images/products/product-img-7.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
-										
-									</div>
-									<div class="text-small mb-1">
-										<a href="#!" class="text-decoration-none text-muted"><small>Dairy, Bread & Eggs</small></a>
-									</div>
-									<h2 class="fs-6"><a href="./pages/shop-single.html" class="text-inherit text-decoration-none">Britannia Cheese Slices</a></h2>
-
-							
-									<div class="d-flex justify-content-between align-items-center mt-3">
-										<div><span class="text-dark">$24</span></div>
-										
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col">
-							<div class="card card-product">
-								<div class="card-body">
-									<div class="text-center position-relative">
-										<a href="./pages/shop-single.html"><img src="assets/images/products/product-img-8.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
-								
-									</div>
-									<div class="text-small mb-1">
-										<a href="#!" class="text-decoration-none text-muted"><small>Instant Food</small></a>
-									</div>
-									<h2 class="fs-6"><a href="./pages/shop-single.html" class="text-inherit text-decoration-none">Kellogg's Original Cereals</a></h2>
-
-									<div class="d-flex justify-content-between align-items-center mt-3">
-										<div>
-											<span class="text-dark">$32</span>
-											<span class="text-decoration-line-through text-muted">$35</span>
-										</div>
-										
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col">
-							<div class="card card-product">
-								<div class="card-body">
-									<div class="text-center position-relative">
-										<a href="./pages/shop-single.html"><img src="assets/images/products/product-img-9.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
-										
-									</div>
-									<div class="text-small mb-1">
-										<a href="#!" class="text-decoration-none text-muted"><small>Snack & Munchies</small></a>
-									</div>
-									<h2 class="fs-6"><a href="./pages/shop-single.html" class="text-inherit text-decoration-none">Slurrp Millet Chocolate</a></h2>
-
-									<div class="d-flex justify-content-between align-items-center mt-3">
-										<div>
-											<span class="text-dark">$3</span>
-											<span class="text-decoration-line-through text-muted">$5</span>
-										</div>
-									
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col">
-							<div class="card card-product">
-								<div class="card-body">
-									<div class="text-center position-relative">
-										<a href="./pages/shop-single.html"><img src="assets/images/products/product-img-10.jpg" alt="Grocery Ecommerce Template" class="mb-3 img-fluid" /></a>
-									
-									</div>
-									<div class="text-small mb-1">
-										<a href="#!" class="text-decoration-none text-muted"><small>Dairy, Bread & Eggs</small></a>
-									</div>
-									<h2 class="fs-6"><a href="./pages/shop-single.html" class="text-inherit text-decoration-none">Amul Butter - 500 g</a></h2>
-
-									<div class="d-flex justify-content-between mt-4">
-										<div>
-											<span class="text-dark">$13</span>
-											<span class="text-decoration-line-through text-muted">$18</span>
-										</div>
-										
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
 			</section>
 			<!-- Popular Products End-->
 			
