@@ -1,4 +1,6 @@
 <?php
+session_start();  // Iniciar sesión para guardar datos
+
 // Incluir el archivo de conexión
 include_once("../php/env.php");
 
@@ -16,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         // Buscar al usuario por correo electrónico
-        $sql = "SELECT contraseña FROM Clientes WHERE email = :email";
+        $sql = "SELECT nombre_usuario, contraseña FROM Clientes WHERE email = :email";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
@@ -24,12 +26,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user["contraseña"])) {
-            echo "Inicio de sesión exitoso.";
+           // Guardar el nombre del usuario en la sesión
+            $_SESSION["usuario"] = $user["nombre_usuario"];
+
+            // Redirigir a departamentos.php
             header("Location: ../../departamentos.php");
             exit();
         } else {
             echo "Correo electrónico o contraseña incorrectos.";
-        }
+        }   
     } catch (PDOException $e) {
         die("Error al iniciar sesión: " . $e->getMessage());
     }

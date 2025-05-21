@@ -11,14 +11,15 @@
         <h1>Hiper Card</h1>
         <h3>Registrarse </h3>
       
-        <form method="POST" action="../hiper_card/assets/php/conexion-registro.php">
-        <div class="form-group">
-          <label for="name">nombre de usuario:</label>
-          <input type="text" id="name" name="name" placeholder="Ingresa un nombre de usuario" required>
-          <label for="password">Contraseña:</label>
-          <input type="password" id="password" name="password" placeholder="Ingresa una contraseña" required>
-          <label for="email">Correo electronico:</label>
-          <input type="email" id="email" name="email" placeholder="Ingresa tu correo electronico" required>
+    <form method="POST" action="../hiper_card/assets/php/conexion-registro.php" autocomplete="on">
+    <div class="form-group">
+<label for="name">Nombre de usuario:</label>
+    <input type="text" id="name" name="name" placeholder="Ingresa un nombre de usuario" required autocomplete="off">
+    <label for="password">Contraseña:</label>
+    <input type="password" id="password" name="password" placeholder="Ingresa una contraseña" required autocomplete="new-password">
+
+        <label for="email">Correo electrónico:</label>
+    <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required autocomplete="username">
           <a class="link" href="../hiper_card/login.php"> Si ya tenes cuenta, haz click aquí </a>
         </div>
       

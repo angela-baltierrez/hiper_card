@@ -8,15 +8,15 @@
     <title>Login</title>
 </head>
 <body>
-    <form method="POST" action="../hiper_card/assets/php/conexion-login.php">
-        <h1>Hiper Cart</h1>
+    <form method="POST" action="../hiper_card/assets/php/conexion-login.php" autocomplete="on">
+        <h1>Hiper Card</h1>
         <h3>Iniciar sesion </h3>
         <div class="form-group">
           <label for="email">Corre electronico:</label>
-          <input type="email" id="email" name="email" placeholder="Ingresa tu correo electronico" required>
+          <input type="email" id="email" name="email" placeholder="Ingresa tu correo electronico" required autocomplete="username">
           <label for="password">Contraseña:</label>
-          <input type="password" id="password" name="password" placeholder="Ingresa una contraseña" required>
-          <a class="link" href="registro.html"> Si no tenes cuenta, haz click aquí </a>
+          <input type="password" id="password" name="password" placeholder="Ingresa una contraseña" required autocomplete="current-password">
+          <a class="link" href="registro.php"> Si no tenes cuenta, haz click aquí </a>
         </div>
       
         <div class="form-group button-class">
