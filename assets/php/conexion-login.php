@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($user && password_verify($password, $user["contraseña"])) {
            // Guardar el nombre del usuario en la sesión
             $_SESSION["usuario"] = $user["nombre_usuario"];
+            $_SESSION["email"] = $email;
 
             // Redirigir a departamentos.php
             header("Location: ../../departamentos.php");

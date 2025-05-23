@@ -17,8 +17,21 @@ if (!isset($_SESSION["usuario"])) {
         <title>Departamentos</title>
         <link rel="stylesheet" href="../hiper_card/assets/css/departamentos.css">
     </head>
+    <!-- Mini Interfaz Usuario -->
+    <div id="mini-perfil" style="display: none; position: absolute; top: 70px; right: 20px; background: white; border: 1px solid #ccc; border-radius: 10px; padding: 20px; width: 250px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); z-index: 999;">
+    <h3>Tu perfil</h3>
+    <p><strong>Nombre:</strong> <?php echo htmlspecialchars($_SESSION["usuario"]); ?></p>
+    <p><strong>Email:</strong> <?php echo isset($_SESSION["email"]) ? htmlspecialchars($_SESSION["email"]) : 'no-email@ejemplo.com'; ?></p>
+    <p>
+        <strong>Contraseña:</strong> 
+        <span id="password-text">********</span>
+        <button type="button" onclick="togglePassword()">👁️</button>
+    </p>
+    <form action="../hiper_card/assets/php/logouts.php" method="post">
+        <button type="submit" style="background-color: red; color: white; padding: 5px 10px; border: none; border-radius: 5px;">Cerrar sesión</button>
+    </form>
+</div>
     <body>
-
         <header class="header">
         <div class="logo">
             <img src="../hiper_card/assets/images/hipercard logo.png" alt="logo de la marca">
@@ -87,7 +100,7 @@ if (!isset($_SESSION["usuario"])) {
         <nav>
             <ul class="nav-link">
                 <li><a href="lista_favoritos"></a>elpepe</li>
-                <li><a href="perfil"></a><?php echo htmlspecialchars($_SESSION["usuario"]); ?></li> <!-- nombre del cuenta -->
+                <li id="btn-perfil" style="cursor: pointer;"><?php echo htmlspecialchars($_SESSION["usuario"]); ?></li>  <!-- nombre del cuenta -->
                 <li><a href="lista_productos"></a>carrito</li>
             </ul>
         </nav>
@@ -249,6 +262,32 @@ if (!isset($_SESSION["usuario"])) {
     </footer>
 
     </body>
+    <script>
+    const btnPerfil = document.getElementById("btn-perfil");
+    const miniPerfil = document.getElementById("mini-perfil");
+    const passwordText = document.getElementById("password-text");
+    let mostrar = false;
+
+    btnPerfil.addEventListener("click", () => {
+        miniPerfil.style.display = miniPerfil.style.display === "none" ? "block" : "none";
+    });
+
+    function togglePassword() {
+        if (mostrar) {
+            passwordText.textContent = "********";
+        } else {
+            passwordText.textContent = "<?php echo isset($_SESSION['password']) ? htmlspecialchars($_SESSION['password']) : '12345678'; ?>";
+        }
+        mostrar = !mostrar;
+    }
+
+    // Ocultar al hacer clic fuera
+    document.addEventListener("click", function(e) {
+        if (!miniPerfil.contains(e.target) && e.target !== btnPerfil) {
+            miniPerfil.style.display = "none";
+        }
+    });
+</script>
     <script src="../hiper_card/assets/js/departamentos.js"></script>
 
     </html>
