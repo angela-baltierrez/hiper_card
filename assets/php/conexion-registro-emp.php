@@ -23,8 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Hashear la contraseña para mayor seguridad
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    // ID del rol de cliente (id_rol = 2)
-    $rol_cliente = 2;
+    // ID del rol de cliente (id_rol = 1)
+    $rol_emp = 1;
 
     try {
         // Consulta SQL segura
@@ -36,19 +36,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':password', $hashedPassword);
         $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':id_rol', $rol_cliente);
+        $stmt->bindParam(':id_rol', $rol_emp);
 
         // Ejecutar la consulta
         $stmt->execute();
+ if ($user && password_verify($password, $user["contraseña"])) {
 
-      if ($user && password_verify($password, $user["contraseña"])) {
-    
       $_SESSION["id_rol"] = $user["id_rol"];  // Guardamos el rol
 
     // Redirigir después del registro
         header('Location: ../../departamentos.php'); //=>>>>proximo en agregar
         exit();
  }
+
+    
+
     } catch (PDOException $e) {
         die("Error al registrar el usuario: " . $e->getMessage());
     }

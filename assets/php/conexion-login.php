@@ -30,7 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Guardar información en sesión
             $_SESSION["usuario"] = $user["nombre_usuario"];
             $_SESSION["email"] = $email;
-            $_SESSION["rol"] = $user["id_rol"];  // Guardamos el rol
+            $_SESSION["id_rol"] = $user["id_rol"];  // Guardamos el rol
+        
 
             // Redirigir a la página principal
             header("Location: ../../departamentos.php");
