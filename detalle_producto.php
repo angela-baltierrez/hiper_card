@@ -16,7 +16,7 @@ try {
             p.nombre AS nombre_producto,
             c.nombre AS nombre_categoria,
             p.precio,
-            p.descripcion
+            p.descripción
         FROM Productos p
         INNER JOIN Categorias c ON p.id_categoria = c.id_categoria
         WHERE p.id_producto = :id_producto
@@ -176,8 +176,8 @@ try {
              <div class="para_la_informacion_titulo"><h1><?php echo htmlspecialchars($producto['nombre_producto']); ?></h1></div>
                  <div class="para_la_informacion_precio"><h1>Precio: $<?php echo $producto['precio']; ?></h1></div>
                  <button class="button_comprar">agregar</button>
-                 <div class="descripcion_texto"><p>descripcion:</p></div>
-                 <div class="para_la_informacion_descripcion"><p><?php echo htmlspecialchars($producto['descripcion']); ?></p></div>
+                 <div class="descripcion_texto"><p>descripción:</p></div>
+                 <div class="para_la_informacion_descripcion"><p><?php echo htmlspecialchars($producto['descripción']); ?></p></div>
          </div>
        </div>
      </seletion>

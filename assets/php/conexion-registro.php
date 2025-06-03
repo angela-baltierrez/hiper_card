@@ -23,20 +23,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Hashear la contraseña para mayor seguridad
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
+    // ID del rol de cliente (id_rol = 2)
+    $rol_cliente = 2;
+
     try {
         // Consulta SQL segura
-        $sql = "INSERT INTO Clientes (nombre_usuario, contraseña, email) VALUES (:username, :password, :email)";
+        $sql = "INSERT INTO Usuarios (nombre_usuario, contraseña, email, id_rol) 
+                VALUES (:username, :password, :email, :id_rol)";
         $stmt = $conn->prepare($sql);
 
         // Vincular los parámetros
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':password', $hashedPassword);
         $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':id_rol', $rol_cliente);
 
         // Ejecutar la consulta
         $stmt->execute();
 
-        echo "Registro exitoso.";
+        // Redirigir después del registro
         header('Location: ../../departamentos.php');
         exit();
 

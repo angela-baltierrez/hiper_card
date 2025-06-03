@@ -260,34 +260,7 @@ if (!isset($_SESSION["usuario"])) {
             </div>
         </div>
     </footer>
-
     </body>
-    <script>
-    const btnPerfil = document.getElementById("btn-perfil");
-    const miniPerfil = document.getElementById("mini-perfil");
-    const passwordText = document.getElementById("password-text");
-    let mostrar = false;
-
-    btnPerfil.addEventListener("click", () => {
-        miniPerfil.style.display = miniPerfil.style.display === "none" ? "block" : "none";
-    });
-
-    function togglePassword() {
-        if (mostrar) {
-            passwordText.textContent = "********";
-        } else {
-            passwordText.textContent = "<?php echo isset($_SESSION['password']) ? htmlspecialchars($_SESSION['password']) : '12345678'; ?>";
-        }
-        mostrar = !mostrar;
-    }
-
-    // Ocultar al hacer clic fuera
-    document.addEventListener("click", function(e) {
-        if (!miniPerfil.contains(e.target) && e.target !== btnPerfil) {
-            miniPerfil.style.display = "none";
-        }
-    });
-</script>
     <script src="../hiper_card/assets/js/departamentos.js"></script>
 
     </html>

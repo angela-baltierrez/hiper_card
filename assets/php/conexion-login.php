@@ -18,19 +18,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         // Buscar al usuario por correo electrónico
-        $sql = "SELECT nombre_usuario, contraseña FROM Clientes WHERE email = :email";
+        $sql = "SELECT nombre_usuario, contraseña, id_rol FROM Usuarios WHERE email = :email";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        // Verificar la contraseña
         if ($user && password_verify($password, $user["contraseña"])) {
-           // Guardar el nombre del usuario en la sesión
+            // Guardar información en sesión
             $_SESSION["usuario"] = $user["nombre_usuario"];
             $_SESSION["email"] = $email;
+            $_SESSION["rol"] = $user["id_rol"];  // Guardamos el rol
 
-            // Redirigir a departamentos.php
+            // Redirigir a la página principal
             header("Location: ../../departamentos.php");
             exit();
         } else {
