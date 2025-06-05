@@ -13,7 +13,7 @@
       
     <form method="POST" action="../hiper_card/assets/php/conexion-registro.php" autocomplete="on">
     <div class="form-group">
-<label for="name">Nombre de usuario:</label>
+    <label for="name">Nombre de usuario:</label>
     <input type="text" id="name" name="name" placeholder="Ingresa un nombre de usuario" required autocomplete="off">
     <label for="password">Contraseña:</label>
     <input type="password" id="password" name="password" placeholder="Ingresa una contraseña" required autocomplete="new-password">

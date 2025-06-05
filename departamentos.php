@@ -8,6 +8,7 @@ if (!isset($_SESSION["usuario"])) {
     <?php 
     require_once ('../hiper_card/assets/php/conexion-departamentos.php'); 
     ?>
+      
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -31,6 +32,67 @@ if (!isset($_SESSION["usuario"])) {
         <button type="submit" style="background-color: red; color: white; padding: 5px 10px; border: none; border-radius: 5px;">Cerrar sesión</button>
     </form>
 </div>
+
+
+
+
+
+<!-- PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP -->
+
+<!-- BURBUJA -->
+
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">agregar prodcuto:</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="../hiper_card/assets/php/conexion-agregar.php">
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">nombre:</label>
+            <input type="text" class="form-control" id="name"  name="nombre">
+          </div>
+            <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">precio:</label>
+            <input type="number" class="form-control" id="precio"  name="precio">
+          </div>
+             <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">stock:</label>
+            <input type="number" class="form-control" id="stock"  name="stock">
+          </div>
+           <select name="mi-lista" id="mi-lista">
+            <option value="valor1">Opción 1</option>
+            <option value="valor2">Opción 2 (Predeterminada)</option>
+            <option value="valor3">Opción 3</option>
+         </select>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">descripcion:</label>
+            <textarea class="form-control" id="descripcion" name="descripcion"></textarea>
+          </div>
+            <label for="imagen">Seleccionar imagen:</label>
+            <input type="file" id="imagen" name="imagen" accept="image/*">
+            
+        </form>
+      </div>
+      <div class="modal-footer">
+    
+         <input type="submit" value="Subir">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP -->
+
+
     <body>
         <header class="header">
         <div class="logo">
@@ -99,7 +161,16 @@ if (!isset($_SESSION["usuario"])) {
         </div>
         <nav>
             <ul class="nav-link">
-                <li><a href="lista_favoritos"></a>elpepe</li>
+                
+  <?php if (isset($_SESSION["id_rol"]) && $_SESSION["id_rol"] == 1): ?>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+        
+    <button type="button" onclick="modal1.js" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@">Open modal for @NIGGER</button>
+    <script src="modal1.js"></script>
+
+    <?php endif; ?>
+
                 <li id="btn-perfil" style="cursor: pointer;"><?php echo htmlspecialchars($_SESSION["usuario"]); ?></li>  <!-- nombre del cuenta -->
                 <li><a href="lista_productos"></a>carrito</li>
             </ul>

@@ -40,15 +40,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Ejecutar la consulta
         $stmt->execute();
- if ($user && password_verify($password, $user["contraseña"])) {
 
-      $_SESSION["id_rol"] = $user["id_rol"];  // Guardamos el rol
 
     // Redirigir después del registro
         header('Location: ../../departamentos.php'); //=>>>>proximo en agregar
         exit();
- }
-
+ 
     
 
     } catch (PDOException $e) {
