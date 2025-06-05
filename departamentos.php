@@ -8,7 +8,12 @@ if (!isset($_SESSION["usuario"])) {
     <?php 
     require_once ('../hiper_card/assets/php/conexion-departamentos.php'); 
     ?>
-      
+<?php 
+        require_once ('../hiper_card/assets/php/conexion-categorias.php'); 
+  ?>
+
+
+
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -54,36 +59,49 @@ if (!isset($_SESSION["usuario"])) {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form method="POST" action="../hiper_card/assets/php/conexion-agregar.php">
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">nombre:</label>
-            <input type="text" class="form-control" id="name"  name="nombre">
-          </div>
-            <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">precio:</label>
-            <input type="number" class="form-control" id="precio"  name="precio">
-          </div>
-             <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">stock:</label>
-            <input type="number" class="form-control" id="stock"  name="stock">
-          </div>
-           <select name="mi-lista" id="mi-lista">
-            <option value="valor1">Opción 1</option>
-            <option value="valor2">Opción 2 (Predeterminada)</option>
-            <option value="valor3">Opción 3</option>
-         </select>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">descripcion:</label>
-            <textarea class="form-control" id="descripcion" name="descripcion"></textarea>
-          </div>
-            <label for="imagen">Seleccionar imagen:</label>
-            <input type="file" id="imagen" name="imagen" accept="image/*">
-            
-        </form>
+<form method="POST" action="../hiper_card/assets/php/conexion-agregar.php" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label for="name" class="col-form-label">Nombre:</label>
+    <input type="text" class="form-control" id="name" name="nombre">
+  </div>
+
+  <div class="mb-3">
+    <label for="precio" class="col-form-label">Precio:</label>
+    <input type="number" step="0.01" class="form-control" id="precio" name="precio">
+  </div>
+
+  <div class="mb-3">
+    <label for="stock" class="col-form-label">Stock:</label>
+    <input type="number" class="form-control" id="stock" name="stock">
+  </div>
+
+  <div class="mb-3">
+    <select class="form-select" name="id_categoria" id="id_categoria" required>
+  <option value="">-- Selecciona una categoría --</option>
+  <?php foreach ($categorias as $categoria): ?>
+      <option value="<?= htmlspecialchars($categoria['id_categoria']) ?>">
+          <?= htmlspecialchars($categoria['nombre']) ?>
+      </option>
+  <?php endforeach; ?>
+</select>
+  </div>
+
+  <div class="mb-3">
+    <label for="descripcion" class="col-form-label">Descripción:</label>
+    <textarea class="form-control" id="descripcion" name="descripcion"></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label for="imagen">Seleccionar imagen:</label>
+    <input type="file" id="imagen" name="imagen" accept="image/*">
+  </div>
+
+  <div class="modal-footer">
+    <input type="submit" class="btn btn-primary" value="Subir">
+  </div>
+</form>
       </div>
       <div class="modal-footer">
-    
-         <input type="submit" value="Subir">
       </div>
     </div>
   </div>
