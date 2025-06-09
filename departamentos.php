@@ -12,8 +12,11 @@ if (!isset($_SESSION["usuario"])) {
         require_once ('../hiper_card/assets/php/conexion-categorias.php'); 
   ?>
 
-
-
+<?php
+// Antes del foreach de productos:
+$categoriasQuery = $conn->query("SELECT id_categoria, nombre FROM Categorias");
+$categorias = $categoriasQuery->fetchAll(PDO::FETCH_ASSOC);
+?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -23,6 +26,7 @@ if (!isset($_SESSION["usuario"])) {
         <link rel="stylesheet" href="../hiper_card/assets/css/departamentos.css">
     
     </head>
+    <script src="editar.js"></script>
     <!-- Mini Interfaz Usuario -->
     <div id="mini-perfil" style="display: none; position: absolute; top: 70px; right: 20px; background: white; border: 1px solid #ccc; border-radius: 10px; padding: 20px; width: 250px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); z-index: 999;">
     <h3>Tu perfil</h3>
@@ -37,7 +41,6 @@ if (!isset($_SESSION["usuario"])) {
         <button type="submit" style="background-color: red; color: white; padding: 5px 10px; border: none; border-radius: 5px;">Cerrar sesión</button>
     </form>
 </div>
-
 
 
 
@@ -75,11 +78,11 @@ if (!isset($_SESSION["usuario"])) {
     <input type="number" class="form-control" id="stock" name="stock">
   </div>
 
-  <div class="mb-3">
+  <div class="mb-3">  <!-- nuevo px 4/6 -->
     <select class="form-select" name="id_categoria" id="id_categoria" required>
   <option value="">-- Selecciona una categoría --</option>
   <?php foreach ($categorias as $categoria): ?>
-      <option value="<?= htmlspecialchars($categoria['id_categoria']) ?>">
+      <option value="<?= htmlspecialchars($categoria['id_categoria']) ?>"> 
           <?= htmlspecialchars($categoria['nombre']) ?>
       </option>
   <?php endforeach; ?>
@@ -101,7 +104,7 @@ if (!isset($_SESSION["usuario"])) {
   </div>
 </form>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer">    
       </div>
     </div>
   </div>
@@ -110,7 +113,19 @@ if (!isset($_SESSION["usuario"])) {
 
 <!-- PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP -->
 
+<!-- AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaAAAAAAAAAAAAA -->
 
+<!-- BURBUJA DE EDITAR -->
+
+
+
+
+
+
+<!-- PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP -->
+
+
+  <script src="../hiper_card/assets/js/editar.js"></script>
     <body>
         <header class="header">
         <div class="logo">
@@ -251,8 +266,8 @@ if (!isset($_SESSION["usuario"])) {
             <ul>
                 <li><a href="departamentos.php?categoria=snacks">Snacks</a></li>
                 <li><a href="departamentos.php?categoria=bebidas">Bebidas</a></li>
-                <li><a href="departamentos.php?categoria=carne">Carne</a></li>
-                <li><a href="departamentos.php?categoria=fruta">Fruta</a></li>
+                <li><a href="departamentos.php?categoria=carnes">Carne</a></li>
+                <li><a href="departamentos.php?categoria=frutas">Fruta</a></li>
                 <li><a href="departamentos.php?categoria=lacteos">Lácteos</a></li>
                 <li><a href="departamentos.php?categoria=golosinas">Golosinas</a></li>
             </ul>
@@ -297,16 +312,25 @@ if (!isset($_SESSION["usuario"])) {
                             <button class="btn-add-cart">Añadir</button>
                             
   <?php if (isset($_SESSION["id_rol"]) && $_SESSION["id_rol"] == 1): ?>
-
-        
-    <button class="btn-add-cart"> 
+        <!-- EXPLICARRRRRRRR CODIGO-->
+<button type="button" class="btn-add-cart" 
+  data-bs-target="#editarModal" 
+  data-bs-toggle="modal"  
+  data-id="<?php echo $producto['id_producto']; ?>"
+  data-nombre="<?php echo htmlspecialchars($producto['nombre_producto']); ?>"
+  data-precio="<?php echo $producto['precio']; ?>"
+  data-stock="<?php echo $producto['stock']; ?>"
+  data-nombre_categoria="<?php echo htmlspecialchars($producto['nombre_categoria']); ?>"
+  data-id_categoria="<?php echo $producto['id_categoria']; ?>" 
+  data-descripcion="<?php echo htmlspecialchars($producto['descripcion']); ?>"
+> <!-- ESTE -->    <!-- EXPLICARRRRRRRR CODIGO-->
         <i class="bi bi-pencil"> 
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                 <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
             </svg>
         </i>
     </button>
-
+    <script src="editar.js"></script>
     <?php endif; ?>
 
 
@@ -318,6 +342,61 @@ if (!isset($_SESSION["usuario"])) {
             <?php endif; ?>
         </div>
     </div>
+            <!-- EXPLICARRRRRRRR CODIGO-->
+ <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">editar producto</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<form method="POST" action="../hiper_card/assets/php/conexion-editar.php" enctype="multipart/form-data">
+<input type="hidden" id="producto_id" name="id_producto" value="<?= $producto['id_producto'] ?>">
+  <div class="mb-3">
+<h2 class="nombre_del_producto-h2" id="modal_nombre_producto"></h2>
+<input type="text" class="form-control" id="nombre_producto" name="nombre">
+  </div>
+
+  <div class="mb-3">
+ <h2 class="nombre_del_producto-h2" id="modal_precio_producto"></h2>
+    <input type="number" step="0.01" class="form-control" id="precio_producto" name="precio">
+  </div>
+
+  <div class="mb-3">
+    <h2 class="nombre_del_producto-h2" id="modal_stock_producto"></h2>
+    <input type="number" class="form-control" id="stock_producto" name="stock">
+  </div>
+
+  <div class="mb-3">  <!-- nuevo px 4/6 -->
+    
+    <h2 id="modal_categoria_nombre"></h2>
+<select id="categoria_producto" name="categoria_producto" class="form-control">
+  <?php foreach ($categorias as $categoria): ?>
+    <option value="<?php echo $categoria['id_categoria']; ?>">
+      <?php echo htmlspecialchars($categoria['nombre']); ?>
+    </option>
+  <?php endforeach; ?>
+</select>
+  </div>
+
+ <div class="mb-3">
+    <h2 class="nombre_del_producto-h2" id="modal_descripcion_producto"></h2>
+    <textarea class="form-control" id="descripcion_producto" name="descripcion"></textarea>
+  </div>
+
+
+  <div class="modal-footer">
+    <input type="submit" class="btn btn-primary" value="Subir">
+  </div>
+</form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+        <!-- EXPLICARRRRRRRR CODIGO-->
 
     <!-- JavaScript para cambiar el filtro -->
     <script>
@@ -343,8 +422,8 @@ if (!isset($_SESSION["usuario"])) {
                     <ul class="lista_categoria">
                         <li><a href="departamentos.php?categoria=snacks">Snacks</a></li>
                         <li><a href="departamentos.php?categoria=bebidas">Bebidas</a></li>
-                        <li><a href="departamentos.php?categoria=carne">Carne</a></li>
-                        <li><a href="departamentos.php?categoria=fruta">Fruta</a></li>
+                        <li><a href="departamentos.php?categoria=carnes">Carne</a></li>
+                        <li><a href="departamentos.php?categoria=frutas">Fruta</a></li>
 
                         <li><a href="departamentos.php?categoria=lacteos">Lácteos</a></li>
                         <li><a href="departamentos.php?categoria=golosinas">Golosinas</a></li>
@@ -354,9 +433,8 @@ if (!isset($_SESSION["usuario"])) {
                     <ul class="lista_categoria">
                     <li><a href="departamentos.php?categoria=snacks">Snack</a></li>
                     <li><a href="departamentos.php?categoria=bebidas">Bebida</a></li>
-                    <li><a href="departamentos.php?categoria=carne">Carne</a></li>
-                    <li><a href="departamentos.php?categoria=fruta">Fruta</a></li>
-
+                    <li><a href="departamentos.php?categoria=carnes">Carnes</a></li>
+                    <li><a href="departamentos.php?categoria=frutas">Fruta</a></li>
                     <li><a href="departamentos.php?categoria=lacteos">Lácteos</a></li>
                     <li><a href="departamentos.php?categoria=golosinas">Golosinas</a></li>
                     </ul>

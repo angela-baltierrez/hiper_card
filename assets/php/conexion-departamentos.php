@@ -16,12 +16,16 @@ try {
         SELECT 
             p.id_producto,
             p.nombre AS nombre_producto,   
+            p.id_categoria,     
             c.nombre AS nombre_categoria, 
-            p.precio 
+            p.precio,
+            p.stock,
+            p.descripcion
         FROM Productos p
         INNER JOIN Categorias c ON p.id_categoria = c.id_categoria
     ";
 
+    
     // Condiciones (nuevo px)
     $condiciones = [];
     $parametros = [];
@@ -68,6 +72,8 @@ try {
             return $b['similitud'] <=> $a['similitud'];
         });
     }
+    
+    
    //------------------------------------------------
     $cantidad_productos = count($productos);
 } catch (PDOException $e) {
