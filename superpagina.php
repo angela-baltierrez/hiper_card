@@ -517,7 +517,7 @@ require_once ('../hiper_card/assets/php/conexion-departamentos.php');
                 <div class="columna">
                     <div class="cuerpo_de_la_carta"> 
                         <div class="cuerpo_carta_imagen">
-                            <a href="detalle_producto.php?id=<?php echo $producto['id_producto']; ?>">
+                            <a href="registro.php?id=<?php echo $producto['id_producto']; ?>">
                                 <img src="../hiper_card/assets/images/products/<?php echo strtolower(str_replace(' ', '', $producto['nombre_producto'])); ?>.jpg" 
                                     alt="<?php echo htmlspecialchars($producto['nombre_producto']); ?>">
                             </a>
