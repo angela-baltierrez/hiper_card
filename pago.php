@@ -8,30 +8,37 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="conter">
-        <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action list-group-item-light">....</a>
-            <a href="#" class="list-group-item list-group-item-action list-group-item-light">....</a>
-            <a href="#" class="list-group-item list-group-item-action list-group-item-light">...</a>
-            <a href="#" class="list-group-item list-group-item-action list-group-item-light">...</a>
-            <a href="#" class="list-group-item list-group-item-action list-group-item-light">...</a>
-            <a href="#" class="list-group-item list-group-item-action list-group-item-light">...</a>
- 
-        <div>
+   
+            <div style="display: flex; vertical-align: top; justify-content: center;">
+      
             <form method="POST" action="../hiper_card/assets/php/...">
                   
                 
                     <div class="form-group">
-                
-                    <div style="display: flex;">
+                    
+                   <div style="display: flex;">
+
+                    <label style="display: inline-block; vertical-align: top;">nombre:</label>
+                    <label style="display: inline-block; vertical-align: top; padding-left: 129px;">apellido:</label>
+                    </div>
+
+                    <div style="display: flex; padding-bottom: 10px;">
                     <input  type="text"placeholder="ingresa tu nombre"  style="display: inline-block; vertical-align: top;">
                     <input type="text" placeholder="ingresa tu apellido" style="display: inline-block; vertical-align: top;">
                     </div>
+                    <label style="display: inline-block; vertical-align: top;">numero de la tarjeta:</label>
                     <input type="password" id="password" name="password" placeholder="Ingresa tu numero de targeta" required autocomplete="current-password">
 
                     <div style="display: flex;">
+
+                    <label style="display: inline-block; vertical-align: top;">Vencimiento:</label>
+                    <label style="display: inline-block; vertical-align: top; padding-left: 100px;">CSC:</label>
+                    </div>
+                    <div style="display: flex;">
+                  
                     <input  type="text"placeholder="MM/AA"  style="display: inline-block; vertical-align: top;">
-                    <input type="text" placeholder="ingrese " style="display: inline-block; vertical-align: top;">
+                    
+                    <input type="text" placeholder="ingrese 3 digitos" style="display: inline-block; vertical-align: top;">
                     </div>
                     </div>
                 
@@ -39,9 +46,11 @@
                     <button id= "submit" type="submit" style="color: #fff;">confirmar</button>
                     </div>
             </form>
+            </div>
         </div>
         </div>
-    </div>
+    </div> 
+ </div>
 </body>
 <style>
 
