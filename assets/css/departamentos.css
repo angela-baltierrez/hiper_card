@@ -4,6 +4,21 @@
     padding: 0;
     font-family: Inter, sans-serif
 }
+.btn-comprar {
+    background-color: #28a745;
+    color: white;
+    padding: 8px 16px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-comprar:hover {
+    background-color: #218838;
+}
+
 .button{
     background-color: white; 
     border: 1px solid #2da82d;

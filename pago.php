@@ -11,7 +11,7 @@
    
             <div style="display: flex; vertical-align: top; justify-content: center;">
       
-            <form method="POST" action="../hiper_card/assets/php/...">
+            <form method="POST" action="../hiper_card/factura.php">
                   
                 
                     <div class="form-group">
@@ -22,10 +22,16 @@
                     <label style="display: inline-block; vertical-align: top; padding-left: 129px;">apellido:</label>
                     </div>
 
+
+
                     <div style="display: flex; padding-bottom: 10px;">
                     <input  type="text"placeholder="ingresa tu nombre"  style="display: inline-block; vertical-align: top;">
                     <input type="text" placeholder="ingresa tu apellido" style="display: inline-block; vertical-align: top;">
                     </div>
+<div style="display: flex;">
+<div class="img"></div>
+<div class="img2" style="display: inline-block; vertical-align: top;padding-left: 50px; "></div>
+</div>
                     <label style="display: inline-block; vertical-align: top;">numero de la tarjeta:</label>
                     <input type="password" id="password" name="password" placeholder="Ingresa tu numero de targeta" required autocomplete="current-password">
 
@@ -41,9 +47,14 @@
                     <input type="text" placeholder="ingrese 3 digitos" style="display: inline-block; vertical-align: top;">
                     </div>
                     </div>
-                
+                <label style="display: inline-block; vertical-align: top;">Dirección de facturación</label>
+                    <input type="text" name="password" placeholder="Ingresa tu dirección" required autocomplete="current-password">
+<label style="display: inline-block; vertical-align: top;">Telefono</label>
+                    <input type="text" name="password" placeholder="Ingrese su telefono" required autocomplete="current-password" style="margin-block-end: 5%;">
+
                     <div class="form-group button-class">
-                    <button id= "submit" type="submit" style="color: #fff;">confirmar</button>
+                    <button id= "submit" type="submit" style="color: #fff;">confirmar
+                    </button>
                     </div>
             </form>
             </div>
@@ -52,6 +63,11 @@
     </div> 
  </div>
 </body>
+   <script>
+        document.getElementById('submit').addEventListener('click', () => {
+            window.location.href = 'factura.php';
+        });
+    </script>
 <style>
 
 </style>
