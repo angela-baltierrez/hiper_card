@@ -8,6 +8,7 @@ class Cconexion {
         $username = 'sa'; // Usuario de la base de datos
         $password = '1234'; // Contraseña del usuario
         $servidor = 'DESKTOP-4S5EVQS\SQLEXPRESS'; // Nombre del servidor o dirección IP
+
         
         try {
             // Establecer conexión usando PDO y SQL Server, pdo se usa para interactual con la base

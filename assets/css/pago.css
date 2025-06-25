@@ -5,8 +5,28 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  
+  
 }
 
+
+  .img{
+    background-image: url(visa.jpg);
+
+      width: 50px; /* Ancho de la imagen */
+  height: 30px;
+   background-size: cover; /* Hace que la imagen cubra el área del fondo */
+  background-repeat: no-repeat; 
+  }
+  .img2{
+    background-image: url(mastercard.jpg);
+
+      width: 50px; /* Ancho de la imagen */
+  height: 30px;
+   background-size: cover; /* Hace que la imagen cubra el área del fondo */
+  background-repeat: no-repeat; 
+  
+  }
 form {
   max-width: 450px;
   margin: 0 auto;
@@ -72,6 +92,19 @@ input[type="password"]
   
 }
 
+input[type="email"]
+  
+{
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #e7e7e7;
+  border-width: 1px;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: 0.5s;
+  outline:none!important;
+}
 input[type="email"]
   
 {
