@@ -7,6 +7,45 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <title>Document</title>
 </head>
+
+            <form method="POST" action="../hiper_card/assets/php/...">
+                  
+                
+                    <div class="form-group">
+                    
+                   <div style="display: flex;">
+
+                    <label style="display: inline-block; vertical-align: top;">nombre:</label>
+                    <label style="display: inline-block; vertical-align: top; padding-left: 129px;">apellido:</label>
+                    </div>
+
+                    <div style="display: flex; padding-bottom: 10px;">
+                    <input  type="text"placeholder="ingresa tu nombre"  style="display: inline-block; vertical-align: top;">
+                    <input type="text" placeholder="ingresa tu apellido" style="display: inline-block; vertical-align: top;">
+                    </div>
+
+
+                    <label style="display: inline-block; vertical-align: top;">dirrecion:</label>
+                    <input type="password" id="password" name="password" placeholder="Ingresa tu numero de targeta" maxlength="16" required autocomplete="current-password">
+
+                    <div style="display: flex;">
+
+                    <label style="display: inline-block; vertical-align: top;">numero:</label>
+                    <label style="display: inline-block; vertical-align: top; padding-left: 100px;">codigo postal:</label>
+                    </div>
+                    <div style="display: flex;">
+                  
+                    <input  type="text"placeholder="MM/AA" maxlength="4"  style="display: inline-block; vertical-align: top;">
+                    
+                    <input type="text" placeholder="ingrese 3 digitos" maxlength="3" style="display: inline-block; vertical-align: top;">
+                    </div>
+                    </div>
+                
+                    <div class="form-group button-class">
+                    <button id= "submit" type="submit" style="color: #fff;">confirmar</button>
+                    </div>
+            </form>
+
 <body>
    
             <div style="display: flex; vertical-align: top; justify-content: center;">
@@ -26,8 +65,13 @@
                     <input  type="text"placeholder="ingresa tu nombre"  style="display: inline-block; vertical-align: top;">
                     <input type="text" placeholder="ingresa tu apellido" style="display: inline-block; vertical-align: top;">
                     </div>
+                    <select name="tipo_pago" required>
+  <option value="Crédito">Tarjeta de Crédito</option>
+  <option value="Débito">Tarjeta de Débito</option>
+</select>
+
                     <label style="display: inline-block; vertical-align: top;">numero de la tarjeta:</label>
-                    <input type="password" id="password" name="password" placeholder="Ingresa tu numero de targeta" required autocomplete="current-password">
+                    <input type="password" id="password" name="password" placeholder="Ingresa tu numero de targeta" maxlength="16" required autocomplete="current-password">
 
                     <div style="display: flex;">
 
@@ -36,9 +80,9 @@
                     </div>
                     <div style="display: flex;">
                   
-                    <input  type="text"placeholder="MM/AA"  style="display: inline-block; vertical-align: top;">
+                    <input  type="text"placeholder="MM/AA" maxlength="4"  style="display: inline-block; vertical-align: top;">
                     
-                    <input type="text" placeholder="ingrese 3 digitos" style="display: inline-block; vertical-align: top;">
+                    <input type="text" placeholder="ingrese 3 digitos" maxlength="3" style="display: inline-block; vertical-align: top;">
                     </div>
                     </div>
                 
@@ -46,6 +90,32 @@
                     <button id= "submit" type="submit" style="color: #fff;">confirmar</button>
                     </div>
             </form>
+              <script>
+    // Guardar carrito y enviarlo con el formulario usando fetch()
+    document.getElementById('formPago').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const formData = new FormData(form);
+
+      // Agregar carrito desde localStorage
+      const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+      formData.append('carrito', JSON.stringify(carrito));
+
+      fetch('procesar-pago.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.text())
+      .then(data => {
+        alert(data);
+        localStorage.removeItem('carrito'); // Limpia el carrito
+        window.location.href = 'superpagina.php'; // Redirigir
+      })
+      .catch(err => console.error(err));
+    });
+  </script>
             </div>
         </div>
         </div>
