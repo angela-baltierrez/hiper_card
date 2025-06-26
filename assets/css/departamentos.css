@@ -4,24 +4,22 @@
     padding: 0;
     font-family: Inter, sans-serif
 }
-.button{
-    background-color: white; 
-    border: 1px solid #2da82d;
-    border-radius: 10px;
-    color: #2da82d; 
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    padding: 14px 50px; /*tamaño del boton*/
+
+a{
+    text-decoration: none !important;
+    color: #2da82d !important;
 }
-.button:hover{
+
+.btnbuscar{
+    background-color: green;
+    border-radius: 10px;
+    width: 70px;
+    border: none;
+
+}
+
+
+.btnbuscar:hover{
     background-color: #2da82d;
     color: white;
 }
@@ -47,15 +45,16 @@
 .header .search_box{
     display: flex;
     margin: auto;
-    height: 35px; /*altura*/
+    height: 45px; /*altura*/
     line-height: 35px;
+   
+
 }
 
 .header .search_box input{
-    border: 0.1px;
-    border-style: solid;
-    border-radius: 6px;
-    padding: 5px
+    border: none;
+    border-radius: 10px;
+    padding: 10px
 }
 
 .header .nav-link{
@@ -65,11 +64,6 @@
 .header .nav-link li{
     display: inline-block; /*para que ser forme en horizontal*/
     padding: 15px; /*separar los botones*/
-}
-
-.mani{
-    font-size: 20px;
-    height: 50px;
 }
 
 .nav-opciones-categorias{
@@ -89,6 +83,7 @@
     padding: 5px; /*separar los botones*/
     list-style: none;
     cursor: pointer;
+    
 }
 
 
@@ -101,6 +96,7 @@
     background-color: blue;
     border-radius: 5px;
     color: white;
+    
 }
 
 .nav-opciones-categorias .nav-menu{
@@ -181,7 +177,6 @@
 
 /* Contenedor principal para alinear aside y ajustar_la_busquedar */
 .contenido_principal{
-    display: flex;
     gap: 2rem; /* Espacio entre el aside y el contenedor de productos */
     padding: 1.5rem;
 }
@@ -209,11 +204,12 @@
 
 .barra_departamentos ul li {
     font-size: 1.2rem;
-    padding: 0.5rem 0;
     cursor: pointer;
     color: #555;
     text-align: center;
-    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    padding-left: 15px;
+    padding-right: 15px;
     transition: color 0.3s;
 }
 
@@ -339,8 +335,8 @@
 
     background-color: #000;
     color: #fff;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
 
     display: flex;
     justify-content: center;

@@ -137,24 +137,13 @@ $categorias = $categoriasQuery->fetchAll(PDO::FETCH_ASSOC);
         
     <form class="search_box" method="get" action="departamentos.php"> <!-- nuevo PX-->
         <input type="search" name="busqueda" placeholder="Buscar producto" aria-label="Buscar">
-        <button type="submit">Buscar</button>
+        <button class="btnbuscar" type="submit" >Buscar</button>
     </form>
         <div class="container-icon">
             <div class="container-cart-icon">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="icon-cart"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
-                    />
-                </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                    </svg>
                 <div class="count-products">
                     <span id="contador-productos">0</span>
                 </div>
@@ -205,30 +194,9 @@ $categorias = $categoriasQuery->fetchAll(PDO::FETCH_ASSOC);
     <?php endif; ?>
 
                 <li id="btn-perfil" style="cursor: pointer;"><?php echo htmlspecialchars($_SESSION["usuario"]); ?></li>  <!-- nombre del cuenta -->
-                <li><a href="lista_productos"></a>carrito</li>
             </ul>
         </nav>
         </header>
-        <div class="mani">
-        <nav class="nav-opciones-categorias">
-        <ul class="nav-link-lista">
-            <li class="nav-link-departamentos">
-                <a href="#">Departamentos
-                    <span class="icono-lista">
-                    </span>
-                </a>
-                <ul class="nav-menu">
-                    <li class="nav-menu-opciones"><a href="departamentos.php?categoria=snacks">Snacks</a></li>
-                    <li class="nav-menu-opciones"><a href="departamentos.php?categoria=bebidas">Bebidas</a></li>
-                    <li class="nav-menu-opciones"><a href="departamentos.php?categoria=carne">Carne</a></li>
-                    <li class="nav-menu-opciones"><a href="departamentos.php?categoria=fruta">Fruta</a></li>
-                    <li class="nav-menu-opciones"><a href="departamentos.php?categoria=lacteos">Lácteos</a></li>
-                    <li class="nav-menu-opciones"><a href="departamentos.php?categoria=golosinas">Golosinas</a></li>
-                </ul>
-            </li>
-        </ul>  
-    </nav>
-    </div>
     <div class="direccion_departamentos">
     <section class="direccion_departamentos_seleccion">
             <div class="ruta">
@@ -261,9 +229,9 @@ $categorias = $categoriasQuery->fetchAll(PDO::FETCH_ASSOC);
     <div class="contenido_principal">
 
     <aside class="aside">
-    <div class="barra_departamentos">
+    <div class="barra_departamentos" style="display: flex;">
             <h2>Departamentos</h2>
-            <ul>
+            <ul style="display: flex;">
                 <li><a href="departamentos.php?categoria=snacks">Snacks</a></li>
                 <li><a href="departamentos.php?categoria=bebidas">Bebidas</a></li>
                 <li><a href="departamentos.php?categoria=carnes">Carne</a></li>
