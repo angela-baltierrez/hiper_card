@@ -12,6 +12,9 @@ class Cconexion {
 =======
         $servidor = 'DESKTOP-QB22C4J\SQLEXPRESS'; // Nombre del servidor o dirección IP
 
+<<<<<<< HEAD
+>>>>>>> d7b39714a930ea6223bc0094c8a26930f267b8d9
+=======
 >>>>>>> d7b39714a930ea6223bc0094c8a26930f267b8d9
         
         try {
