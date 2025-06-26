@@ -4,10 +4,44 @@
     padding: 0;
     font-family: Inter, sans-serif
 }
+<<<<<<< HEAD
 
 a{
     text-decoration: none !important;
     color: #2da82d !important;
+=======
+.btn-comprar {
+    background-color: #28a745;
+    color: white;
+    padding: 8px 16px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-comprar:hover {
+    background-color: #218838;
+}
+
+.button{
+    background-color: white; 
+    border: 1px solid #2da82d;
+    border-radius: 10px;
+    color: #2da82d; 
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    padding: 14px 50px; /*tamaño del boton*/
+>>>>>>> d7b39714a930ea6223bc0094c8a26930f267b8d9
 }
 
 .btnbuscar{

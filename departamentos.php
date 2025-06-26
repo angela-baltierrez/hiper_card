@@ -175,8 +175,11 @@ $categorias = $categoriasQuery->fetchAll(PDO::FETCH_ASSOC);
                 </div>
 
                 <div class="cart-total hidden">
-                    <h3>Total:</h3>
+
+                <h3>Total:</h3>
                     <span class="total-pagar">$0</span>
+                    
+                     <button id="btn-comprar" class="btn-comprar">Comprar</button>
                 </div>
                 <p class="cart-empty">El carrito está vacío</p>
             </div>
