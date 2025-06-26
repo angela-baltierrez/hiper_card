@@ -14,8 +14,9 @@
     <h1>Resumen de tu Compra</h1>
     <div id="lista-productos"></div>
     <p><strong>Total: $<span id="total"></span></strong></p>
-
+<button id="volver">volver</button>
     <script>
+
         const historial = JSON.parse(localStorage.getItem('historialCompra')) || [];
         const total = localStorage.getItem('totalCompra') || 0;
         const lista = document.getElementById('lista-productos');
@@ -42,6 +43,12 @@
         // localStorage.removeItem('carrito');
         // localStorage.removeItem('totalCompra');
         // localStorage.removeItem('historialCompra');
-    </script>
+  document.getElementById('volver').addEventListener('click', () => {
+         localStorage.removeItem('carrito'); // Limpia el carrito
+            window.location.href = 'departamentos.php';
+        });
+  </script>
+
+  
 </body>
 </html>

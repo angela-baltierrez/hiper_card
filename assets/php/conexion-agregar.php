@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $extension = pathinfo($_FILES["imagen"]["name"], PATHINFO_EXTENSION);
 
         // Limpiar el nombre del producto para usarlo como nombre de archivo
-        $nombreImagen = preg_replace('/[^a-zA-Z0-9_-]/', '_', strtolower($name)) . '.' . $extension;
+        $nombreImagen = preg_replace('/[^a-zA-Z0-9_-]/', '', strtolower($name)) . '.' . $extension;
 
         // Ruta destino
         $rutaDestino = "../images/products/" . $nombreImagen;
@@ -43,18 +43,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':precio', $precio);
         $stmt->bindParam(':nombre', $name);
         $stmt->bindParam(':stock', $stock);
+
         $stmt->bindParam(':descripcion', $descripcion);
 
+
         // Si usas una lista desplegable para seleccionar la categoría:
-        $categoria = isset($_POST['mi-lista']) ? intval($_POST['mi-lista']) : 1;
+        $categoria = isset($_POST['id_categoria']) ? intval($_POST['id_categoria']) : 1;
         $stmt->bindParam(':categoria', $categoria);
 
         $stmt->execute();
 
         echo "Producto registrado correctamente.";
 
-    } catch (PDOException $e) {
-        die("Error al registrar el producto: " . $e->getMessage());
-    }
-}
-?>
+    } catch (PDOException $e) { 
+        die("Error al registrar el produ    cto: " . $e->getMessage());
+    }   
+}   
+?>  

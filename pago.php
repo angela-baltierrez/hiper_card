@@ -10,7 +10,39 @@
 
 
 <body>
+
+    <!--primero-->
    
+     <div style="display: flex; vertical-align: top;">
+      
+            <form method="POST" action="../hiper_card/factura.php">
+                   <div id="lista-productos"></div>
+    <p><strong>Total: $<span id="total"></span></strong></p>
+                 <script>
+
+        
+        const total = localStorage.getItem('totalCompra') || 0;
+      
+        const totalSpan = document.getElementById('total');
+
+
+        totalSpan.textContent = total;
+        </script>
+                    
+                <label style="display: inline-block; vertical-align: top;">Dirección de envio</label>
+                    <input type="text" name="password" placeholder="Ingresa tu dirección" required autocomplete="current-password">
+<label style="display: inline-block; vertical-align: top;">Telefono</label>
+                    <input type="text" name="password" placeholder="Ingrese su telefono" required autocomplete="current-password" style="margin-block-end: 5%;">
+
+                    <div class="form-group button-class">
+                    <button  style="color: #fff; " class="btn-close" data-bs-dismiss="modal" aria-label="Close">siguiente
+                    </button>
+                    </div>
+            </form>
+
+
+    <!--segundo -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div style="display: flex; vertical-align: top; justify-content: center;">
       
             <form method="POST" action="../hiper_card/factura.php">
@@ -79,7 +111,7 @@
 
       formData.append('carrito', JSON.stringify(carrito));
 
-      fetch('procesar-pago.php', {
+      fetch('factura.php', {
         method: 'POST',
         body: formData
       })
@@ -97,12 +129,14 @@
         </div>
     </div> 
  </div>
+  </div>
 </body>
    <script>
         document.getElementById('submit').addEventListener('click', () => {
             window.location.href = 'factura.php';
         });
     </script>
+
 <style>
 
 </style>
