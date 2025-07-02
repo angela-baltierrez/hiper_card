@@ -32,11 +32,7 @@ $categorias = $categoriasQuery->fetchAll(PDO::FETCH_ASSOC);
     <h3>Tu perfil</h3>
     <p><strong>Nombre:</strong> <?php echo htmlspecialchars($_SESSION["usuario"]); ?></p>
     <p><strong>Email:</strong> <?php echo isset($_SESSION["email"]) ? htmlspecialchars($_SESSION["email"]) : 'no-email@ejemplo.com'; ?></p>
-    <p>
-        <strong>Contraseña:</strong> 
-        <span id="password-text">********</span>
-        <button type="button" onclick="togglePassword()">👁️</button>
-    </p>
+
     <form action="../hiper_card/assets/php/logouts.php" method="post">
         <button type="submit" style="background-color: red; color: white; padding: 5px 10px; border: none; border-radius: 5px;">Cerrar sesión</button>
     </form>
@@ -191,7 +187,7 @@ $categorias = $categoriasQuery->fetchAll(PDO::FETCH_ASSOC);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
         
-    <button type="button" onclick="modal1.js" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@">Open modal for @NIGGER</button>
+    <button type="button" onclick="modal1.js" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@">AGREGAR PRODUCTO</button>
     <script src="modal1.js"></script>
 
     <?php endif; ?>
@@ -241,6 +237,7 @@ $categorias = $categoriasQuery->fetchAll(PDO::FETCH_ASSOC);
                 <li><a href="departamentos.php?categoria=frutas">Fruta</a></li>
                 <li><a href="departamentos.php?categoria=lacteos">Lácteos</a></li>
                 <li><a href="departamentos.php?categoria=golosinas">Golosinas</a></li>
+                <li><a href="departamentos.php?categoria=limpieza">Limpieza</a></li>
             </ul>
         </div>
     </aside>

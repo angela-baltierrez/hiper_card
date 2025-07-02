@@ -4,7 +4,7 @@ class Cconexion {
 
     public static function ConexionBD() {
         $host = 'localhost'; // Cambiar si usas un servidor remoto
-        $dbname = 'hiper-card'; // Nombre de la base de datos
+        $dbname = 'hiper-card2'; // Nombre de la base de datos
         $username = 'sa'; // Usuario de la base de datos
         $password = '1234'; // Contraseña del usuario
         $servidor = 'DESKTOP-4S5EVQS\SQLEXPRESS'; // Nombre del servidor o dirección IP

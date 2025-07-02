@@ -17,9 +17,12 @@
     <input type="text" id="name" name="name" placeholder="Ingresa un nombre de usuario" required autocomplete="off">
     <label for="password">Contraseña:</label>
     <input type="password" id="password" name="password" placeholder="Ingresa una contraseña" required autocomplete="new-password">
-
-        <label for="email">Correo electrónico:</label>
+    <label for="email">Correo electrónico:</label>
     <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required autocomplete="username">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required autocomplete="given-name">
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" name="apellido" placeholder="Ingresa tu apellido" required autocomplete="family-name">
           <a class="link" href="../hiper_card/login.php"> Si ya tenes cuenta, haz click aquí </a>
         </div>
       

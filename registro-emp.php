@@ -20,10 +20,17 @@
 
         <label for="email">Correo electrónico:</label>
     <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required autocomplete="username">
-          <a class="link" href="../hiper_card/login.php"> Si ya tenes cuenta, haz click aquí </a>
-        </div>
-      
+
+
+            <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required autocomplete="given-name">
+
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" name="apellido" placeholder="Ingresa tu apellido" required autocomplete="family-name">
+
+       <a class="link" href="../hiper_card/login.php"> Si ya tenes cuenta, haz click aquí </a>
         <div class="form-group button-class">
+           
           <button type="submit"><a style="color: #fff;">crear cuenta</a></button>
         </div>
       </form>

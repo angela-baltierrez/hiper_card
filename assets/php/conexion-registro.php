@@ -9,9 +9,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST["name"]);
     $password = trim($_POST["password"]);
     $email = trim($_POST["email"]);
+    $nombre = trim($_POST["nombre"]);
+    $apellido = trim($_POST["apellido"]);
 
     // Validar campos
-    if (empty($username) || empty($password) || empty($email)) {
+    if (empty($username) || empty($password) || empty($email) || empty($nombre) || empty($apellido)) {
         die("Todos los campos son obligatorios.");
     }
 
@@ -28,14 +30,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         // Consulta SQL segura
-        $sql = "INSERT INTO Usuarios (nombre_usuario, contraseña, email, id_rol) 
-                VALUES (:username, :password, :email, :id_rol)";
+        $sql = "INSERT INTO Usuarios (nombre_usuario, contraseña, email, nombre, apellido, id_rol) 
+                 VALUES (:username, :password, :email, :nombre, :apellido, :id_rol)";
         $stmt = $conn->prepare($sql);
 
         // Vincular los parámetros
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':password', $hashedPassword);
         $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':nombre', $nombre);
+        $stmt->bindParam(':apellido', $apellido);
         $stmt->bindParam(':id_rol', $rol_cliente);
 
         // Ejecutar la consulta

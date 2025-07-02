@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         // Buscar al usuario por correo electrónico
-        $sql = "SELECT nombre_usuario, contraseña, id_rol FROM Usuarios WHERE email = :email";
+        $sql = "SELECT nombre_usuario, contraseña, id_rol, nombre, apellido FROM Usuarios WHERE email = :email";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
@@ -30,8 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Guardar información en sesión
             $_SESSION["usuario"] = $user["nombre_usuario"];
             $_SESSION["email"] = $email;
-            $_SESSION["id_rol"] = $user["id_rol"];  // Guardamos el rol
-        
+            $_SESSION["id_rol"] = $user["id_rol"];
+            $_SESSION["nombre"] = $user["nombre"];
+            $_SESSION["apellido"] = $user["apellido"];
 
             // Redirigir a la página principal
             header("Location: ../../departamentos.php");
