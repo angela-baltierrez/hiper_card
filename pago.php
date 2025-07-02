@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../hiper_card/assets/css/pago.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-    <title>Document</title>
+    <title>pago</title>
 </head>
 
 
@@ -89,27 +89,7 @@
 
                     </div>
             </form>
-<script>
-
-  document.getElementById('btnVolver').addEventListener('click', () => {
-  document.getElementById('form-tarjeta').style.display = 'none';
-  document.getElementById('form-envio').style.display = 'block';
-});
-
-  document.getElementById('btnSiguiente').addEventListener('click', () => {
-    document.getElementById('form-envio').style.display = 'none';
-    document.getElementById('form-tarjeta').style.display = 'block';
-  });
-
-  document.getElementById('formTarjeta').addEventListener('submit', function (e) {
-    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    const inputCarrito = document.createElement('input');
-    inputCarrito.type = 'hidden';
-    inputCarrito.name = 'carrito';
-    inputCarrito.value = JSON.stringify(carrito);
-    this.appendChild(inputCarrito);
-  });
-</script>
+                <script src="../hiper_card/assets/js/pago.js"></script>
             </div>
         </div>
         </div>

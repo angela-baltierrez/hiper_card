@@ -66,7 +66,7 @@ try {
          <img src="../hiper_card/assets/images/hipercard logo.png" alt="logo de la marca">
      </div>
      <div class="titulo_pagina">
-        <a href="superpagina.html"><h2>Hiper-card</h2></a>
+        <a href="../hiper_card/superpagina.php"><h2>Hiper-card</h2></a>
      </div>
      <div class="search_box">
          <input class="" type="search" placeholder="Search for product" aria-label="Search">
@@ -213,19 +213,5 @@ try {
     </div>
 </footer>
  </body>
- <script>
-    function cambiarFoto(element) {
-        // Obtener la fuente de la imagen seleccionada
-        const nuevaFuente = element.src; //nuevafuente guarda la infor
-        // Cambiar la imagen principal a la nueva fuente
-        document.getElementById('foto_seleccionada').src = nuevaFuente; //sera la nueva foto grande
-
-            // Remover la clase de borde de todas las miniaturas
-        const miniaturas = document.querySelectorAll('.paraminiproducto img'); 
-        miniaturas.forEach(img => img.classList.remove('imagen-seleccionada'));
-
-        // Agregar el borde a la imagen seleccionada
-        element.classList.add('imagen-seleccionada');
-    }
-    </script>   
+ <script src="../hiper_card/assets/js/cambiarFoto.js"></script>   
 </html>

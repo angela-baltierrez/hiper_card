@@ -1,5 +1,7 @@
+// Espera que el contenido este completamente cargado antes de ejecutar el código.
 document.addEventListener("DOMContentLoaded", function () {
   var editarModal = document.getElementById('editarModal');
+  //muestra el modal para editar
   editarModal.addEventListener('show.bs.modal', function (event) {
     var button = event.relatedTarget;
 
@@ -11,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var descripcion = button.getAttribute('data-descripcion');
     var id = button.getAttribute('data-id');
 
+    //los elementos que va a mostrar el modal en editar
     document.getElementById('modal_nombre_producto').textContent = nombre;
     document.getElementById('modal_precio_producto').textContent = "$" + precio;
     document.getElementById('modal_stock_producto').textContent = stock;
