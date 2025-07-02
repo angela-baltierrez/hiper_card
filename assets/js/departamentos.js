@@ -127,13 +127,19 @@ btnComprar.addEventListener('click', () => {
     }
 
     // Calcular total
-    const total = allProducts.reduce((acc, product) => {
-        return acc + product.quantity * parseFloat(product.price.replace(/[^0-9.-]+/g, ""));
-    }, 0);
+   let totalCompra = 0;
 
+    allProducts.forEach(product => {
+        const precioUnitario = parseFloat(product.price.replace(/[^0-9.-]+/g, ""));
+        const subtotal = precioUnitario * product.quantity;
+        totalCompra += subtotal;
+
+
+    });
     // Guardar en localStorage
-    localStorage.setItem('totalCompra', total);
-    localStorage.setItem('historialCompra', JSON.stringify(allProducts));
+        localStorage.setItem('totalCompra', totalCompra);
+        localStorage.setItem('historialCompra', JSON.stringify(allProducts));
+
 
     // Redirigir a la página de confirmación
     window.location.href = 'pago.php';
