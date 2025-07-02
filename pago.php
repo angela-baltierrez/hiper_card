@@ -12,7 +12,7 @@
 <body>
 
     <!--primero-->
-   
+  
      <div id="form-envio" style="display: flex; vertical-align: top;">
             <form id="formEnvio">
                    <div id="lista-productos"></div>
@@ -24,11 +24,13 @@
          </script>
                     
                 <label style="display: inline-block; vertical-align: top;">Dirección de envio</label>
-                    <input type="text" name="password" placeholder="Ingresa tu dirección" required autocomplete="current-password">
+                    <input type="text" name="Dirección" placeholder="Ingresa tu dirección" required autocomplete="current-password">
 <label style="display: inline-block; vertical-align: top;">Telefono</label>
-                    <input type="text" name="password" placeholder="Ingrese su telefono" required autocomplete="current-password" style="margin-block-end: 5%;">
+                    <input type="text" name="num_telefono" placeholder="Ingrese su telefono" required autocomplete="current-password" style="margin-block-end: 5%;">
 
-                    
+                      <label style="display: inline-block; vertical-align: top;">CP:</label>
+                    <input type="text" id="CP" name="CP" placeholder="Ingresa tu numero de targeta" maxlength="16" required autocomplete="current-password">
+
                     <button type="button" id="btnSiguiente">Siguiente</button>
     </div>
 
@@ -49,11 +51,11 @@
 
 
                     <div style="display: flex; padding-bottom: 10px;">
-                    <input  type="text"placeholder="ingresa tu nombre"  style="display: inline-block; vertical-align: top;">
-                    <input type="text" placeholder="ingresa tu apellido" style="display: inline-block; vertical-align: top;">
+                    <input name="nombre" type="text"placeholder="ingresa tu nombre"  style="display: inline-block; vertical-align: top;">
+                    <input name="apellido" type="text" placeholder="ingresa tu apellido" style="display: inline-block; vertical-align: top;">
                     </div>
-
-                    <select name="tipo_pago" required>
+                
+                    <select name="Tipo_pago" required>
                   <option value="Crédito">Tarjeta de Crédito</option>
                  <option value="Débito">Tarjeta de Débito</option>
                  </select>
@@ -85,7 +87,7 @@
 
                     <div class="form-group button-class">
                     <button type="button" id="btnVolver" class="btn btn-secondary">Volver</button>
-                    <button type="submit" id="btnComprar">Comprar</button>
+                    <button id="btnComprar">Comprar</button>
 
                     </div>
             </form>
@@ -96,6 +98,7 @@
     </div> 
  </div>
   </div>
+
 </body>
    <script>
         document.getElementById('submit').addEventListener('click', () => {
