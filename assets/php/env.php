@@ -7,16 +7,9 @@ class Cconexion {
         $dbname = 'hiper-card'; // Nombre de la base de datos
         $username = 'sa'; // Usuario de la base de datos
         $password = '1234'; // Contraseña del usuario
-<<<<<<< HEAD
-        $servidor = 'DESKTOP-V10GCCE\SQLEXPRESS'; // Nombre del servidor o dirección IP
-=======
-        $servidor = 'DESKTOP-QB22C4J\SQLEXPRESS'; // Nombre del servidor o dirección IP
+        $servidor = 'DESKTOP-4S5EVQS\SQLEXPRESS'; // Nombre del servidor o dirección IP
 
-<<<<<<< HEAD
->>>>>>> d7b39714a930ea6223bc0094c8a26930f267b8d9
-=======
->>>>>>> d7b39714a930ea6223bc0094c8a26930f267b8d9
-        
+
         try {
             // Establecer conexión usando PDO y SQL Server, pdo se usa para interactual con la base
             $conn = new PDO("sqlsrv:Server=$servidor;Database=$dbname", $username, $password);
