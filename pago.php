@@ -66,7 +66,7 @@
               </div>
 
                     <label style="display: inline-block; vertical-align: top;">numero de la tarjeta:</label>
-                    <input type="password" id="password" name="password" placeholder="Ingresa tu numero de targeta" maxlength="16" required autocomplete="current-password">
+                    <input type="password" id="password" name="password" placeholder="Ingresa tu numero de tarjeta" maxlength="16" required autocomplete="current-password">
 
                     <div style="display: flex;">
 

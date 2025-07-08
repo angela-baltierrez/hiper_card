@@ -30,7 +30,7 @@ $categorias = $categoriasQuery->fetchAll(PDO::FETCH_ASSOC);
     <!-- Mini Interfaz Usuario -->
     <div id="mini-perfil" style="display: none; position: absolute; top: 70px; right: 20px; background: white; border: 1px solid #ccc; border-radius: 10px; padding: 20px; width: 250px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); z-index: 999;">
     <h3>Tu perfil</h3>
-    <p><strong>Nombre:</strong> <?php echo htmlspecialchars($_SESSION["usuario"]); ?></p>
+    <p><strong>Nombre:</strong> <?php echo htmlspecialchars($_SESSION["nombre"]); ?></p>
     <p><strong>Email:</strong> <?php echo isset($_SESSION["email"]) ? htmlspecialchars($_SESSION["email"]) : 'no-email@ejemplo.com'; ?></p>
 
     <form action="../hiper_card/assets/php/logouts.php" method="post">
