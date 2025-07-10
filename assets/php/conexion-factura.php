@@ -1,4 +1,5 @@
 <?php
+session_start(); // antes de cualquier salida
 // Conexión a la base de datos
 include_once("env.php");
 $conn = Cconexion::ConexionBD();
@@ -12,9 +13,9 @@ $conn->begin_transaction();
 
 try {
     //Insertar en tabla ENVÍOS
-    $direccion = $_POST['Dirección'] ?? '';
-    $telefono = $_POST['num_telefono'] ?? '';
-    $cp = $_POST['CP'] ?? '';
+    $direccion = $_POST['direccion_envio'] ?? '';
+    $telefono = $_POST['telefono_envio'] ?? '';
+    $cp = $_POST['cp_envio'] ?? '';
 
     $stmt = $conn->prepare("INSERT INTO Envios (Dirección, num_telefono, CP) VALUES (?, ?, ?)");
     $stmt->bind_param("sss", $direccion, $telefono, $cp);
@@ -23,7 +24,7 @@ try {
     $stmt->close();
 
     //Insertar en tabla PAGOS
-    $tipo_pago = $_POST['Tipo_pago'] ?? '';
+    $tipo_pago = $_POST['tipo_pago'] ?? '';
 
     $stmt = $conn->prepare("INSERT INTO Pagos (Tipo_pago) VALUES (?)");
     $stmt->bind_param("s", $tipo_pago);
@@ -53,7 +54,7 @@ try {
     $stmt->close();
 
     // Insertar en DETALLE_VENTAS
-    $stmt = $conn->prepare("INSERT INTO Detalle_ventas (cantidad, precio_unitario, total, id_venta, id_producto) VALUES (?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO Detalle_ventas (cantidad, precio_unitario, subtotal, id_venta, id_producto) VALUES (?, ?, ?, ?, ?)");
 
     foreach ($carrito as $item) {
         $cantidad = (int) $item['quantity'];
