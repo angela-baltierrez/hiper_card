@@ -20,12 +20,14 @@ try {
             c.nombre AS nombre_categoria, 
             p.precio,
             p.stock,
-            p.descripcion
+            p.descripcion,
+            COALESCE(SUM(dv.cantidad), 0) AS cantidad_vendida 
         FROM Productos p
         INNER JOIN Categorias c ON p.id_categoria = c.id_categoria
+        LEFT JOIN Detalle_ventas dv ON p.id_producto = dv.id_producto
     ";
+//cantidad vendida es un alias de dv.cantidad
 
-    
     // Condiciones (nuevo px)
     $condiciones = [];
     $parametros = [];
@@ -38,18 +40,25 @@ try {
     if ($busqueda) {
         $condiciones[] = "p.nombre LIKE :busqueda";
         $parametros[':busqueda'] = '%' . $busqueda . '%';
-    }
+}
 
     if (!empty($condiciones)) {
         $sql .= " WHERE " . implode(" AND ", $condiciones);
     }
+        $sql .= "
+    GROUP BY p.id_producto, p.nombre, p.id_categoria, c.nombre, p.precio, p.stock, p.descripcion
+";
     //-----------------------------------------------------
     // Ordenar por precio si se ha seleccionado
-    if ($orden === 'alto') {
-        $sql .= " ORDER BY p.precio DESC";
-    } elseif ($orden === 'bajo') {
-        $sql .= " ORDER BY p.precio ASC";
-    }
+// Aplicar filtro de orden 
+if ($orden === 'alto') {
+    $sql .= " ORDER BY p.precio DESC";
+} elseif ($orden === 'bajo') {
+    $sql .= " ORDER BY p.precio ASC";
+} elseif ($orden === 'relevante') {
+    $sql .= " ORDER BY cantidad_vendida DESC";
+}
+
 
     // Preparar y ejecutar la consulta
     $query = $conn->prepare($sql);
@@ -60,7 +69,7 @@ try {
     $productos = $query->fetchAll(PDO::FETCH_ASSOC);
 
     // Si hay una búsqueda, calcular la similitud y ordenar //nuevo PX
-    if ($busqueda && !empty($productos)) {
+    if ($busqueda && empty($orden) &&!empty($productos)) {
         foreach ($productos as &$producto) {
             similar_text(strtolower($busqueda), strtolower($producto['nombre_producto']), $porcentaje);
             $producto['similitud'] = $porcentaje;

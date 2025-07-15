@@ -49,7 +49,7 @@
       </select>
 
       <label>Número de tarjeta</label>
-      <input type="password" name="numero_tarjeta" placeholder="Ingresa tu número de tarjeta" maxlength="16" required>
+      <input type="text" name="numero_tarjeta" placeholder="Ingresa tu número de tarjeta" maxlength="16" required>
 
       <div style="display: flex; justify-content: space-between;">
         <label>Vencimiento (MM/AA):</label>
