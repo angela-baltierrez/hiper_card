@@ -7,7 +7,7 @@
           <title>Document</title>
         </head>
         <body>
-  <form id="formCompleto" method="POST" action="hiper-card/assets/php/conexion-factura.php">
+  <form id="formCompleto" method="POST" action="../hiper_card/assets/php/conexion-factura.php">
     <!-- PRIMERA SECCIÓN: ENVÍO -->
     <div id="form-envio" style="display: flex; flex-direction: column; gap: 10px;">
       <div id="lista-productos"></div>
@@ -44,8 +44,8 @@
 
       <label>Tipo de pago</label>
       <select name="tipo_pago" required>
-        <option value="Crédito">Tarjeta de Crédito</option>
-        <option value="Débito">Tarjeta de Débito</option>
+        <option value="credito">Tarjeta de Crédito</option>
+        <option value="debito">Tarjeta de Débito</option>
       </select>
 
       <label>Número de tarjeta</label>
@@ -84,31 +84,42 @@
       document.getElementById('form-envio').style.display = 'flex';
       document.getElementById('form-tarjeta').style.display = 'none';
     });
+ document.getElementById('formCompleto').addEventListener('submit', function (e) {
+  e.preventDefault(); // Evita que el formulario se envíe normalmente
 
+  const carrito = localStorage.getItem('carrito');
 
+  // Verificación opcional
+  if (!carrito || carrito === '[]') {
+    alert('El carrito está vacío');
+    return;
+  }
 
-     document.getElementById('formCompleto').addEventListener('submit', function(e) {
-    e.preventDefault(); // Evita que el formulario se envíe de forma tradicional
+  // Agregar input oculto con carrito
+  const inputCarrito = document.createElement('input');
+  inputCarrito.type = 'hidden';
+  inputCarrito.name = 'carrito';
+  inputCarrito.value = carrito;
+  this.appendChild(inputCarrito);
 
-    const formData = new FormData(this);
+  const formData = new FormData(this);
 
-    fetch('hiper-card/assets/php/conexion-factura.php', {
-      method: 'POST',
-      body: formData
-    })
+  fetch('../hiper_card/assets/php/conexion-factura.php', {
+    method: 'POST',
+    body: formData
+  })
     .then(response => {
       if (!response.ok) throw new Error('Error en el envío');
-      return response.text(); // O .json() si tu PHP devuelve JSON
+      return response.text();
     })
     .then(data => {
       console.log('Respuesta del servidor:', data);
-      // Redirigir a otra página tras enviar
-      window.location.href = 'factura.php';
+      window.location.href = 'factura.php'; // Redirigir después de éxito
     })
     .catch(error => {
       alert('Hubo un problema al enviar los datos: ' + error.message);
     });
-  });
-  </script>
+});
+</script>
 </body>
         </html>

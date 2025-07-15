@@ -265,7 +265,7 @@ $categorias = $categoriasQuery->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                             <h2 class="nombre_del_producto-h2"><?php echo htmlspecialchars($producto['nombre_producto']); ?></h2>
                             <p class="precio_producto-p">$<?php echo $producto['precio']; ?></p>
-                            <button class="btn-add-cart">Añadir</button>
+                            <button class="btn-add-cart" data-id="<?php echo $producto['id_producto'];?>">Añadir</button>
                             
   <?php if (isset($_SESSION["id_rol"]) && $_SESSION["id_rol"] == 1): ?>
         <!-- espacio-->

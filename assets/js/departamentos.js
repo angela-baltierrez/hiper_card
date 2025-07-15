@@ -23,6 +23,7 @@ productsList.addEventListener('click', e => {
 		const product = e.target.parentElement;
 
 		const infoProduct = {
+            id: e.target.dataset.id,
 			quantity: 1,
 			title: product.querySelector('h2').textContent,
 			price: product.querySelector('p').textContent,
@@ -44,6 +45,8 @@ productsList.addEventListener('click', e => {
 		}
 
 		showHTML();
+        console.log(JSON.parse(localStorage.getItem('carrito')));
+
 	}
 });
 

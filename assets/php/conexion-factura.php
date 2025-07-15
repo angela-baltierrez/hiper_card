@@ -1,38 +1,35 @@
 <?php
-session_start(); // antes de cualquier salida
-// Conexión a la base de datos
+session_start();
 include_once("env.php");
+
 $conn = Cconexion::ConexionBD();
-$conn = new mysqli($host, $user, $pass, $db);
-
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
-
-$conn->begin_transaction();
 
 try {
-    //Insertar en tabla ENVÍOS
+    $conn->beginTransaction();
+
+    // Insertar en ENVÍOS
     $direccion = $_POST['direccion_envio'] ?? '';
     $telefono = $_POST['telefono_envio'] ?? '';
     $cp = $_POST['cp_envio'] ?? '';
 
-    $stmt = $conn->prepare("INSERT INTO Envios (Dirección, num_telefono, CP) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $direccion, $telefono, $cp);
-    $stmt->execute();
-    $id_envio = $stmt->insert_id;
-    $stmt->close();
+    $sql = "INSERT INTO Envios (direccion, num_telefono, CP) VALUES (?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$direccion, $telefono, $cp]);
+    $id_envio = $conn->lastInsertId();
 
-    //Insertar en tabla PAGOS
-    $tipo_pago = $_POST['tipo_pago'] ?? '';
+// Obtener el tipo de pago seleccionado
+$tipo_pago = $_POST['tipo_pago'] ?? '';
 
-    $stmt = $conn->prepare("INSERT INTO Pagos (Tipo_pago) VALUES (?)");
-    $stmt->bind_param("s", $tipo_pago);
-    $stmt->execute();
-    $id_pago = $stmt->insert_id;
-    $stmt->close();
+// Buscar el ID del tipo de pago existente
+$stmt = $conn->prepare("SELECT id_pago FROM Pagos WHERE Tipo_pago = ?");
+$stmt->execute([$tipo_pago]);
+$id_pago = $stmt->fetchColumn();
 
-    //Calcular el TOTAL desde el carrito
+if (!$id_pago) {
+    throw new Exception("Tipo de pago no válido o no encontrado.");
+}
+
+    // Leer carrito desde POST (JSON)
     $carrito = json_decode($_POST['carrito'] ?? '[]', true);
     $total_compra = 0;
 
@@ -43,38 +40,31 @@ try {
         $total_compra += $subtotal;
     }
 
-    //Insertar en tabla VENTAS
-    session_start();
-    $id_usuario = $_SESSION['id_usuario'] ?? 1; // Por ahora asumimos ID 1 si no está logueado
+    // Insertar en VENTAS
+    $id_usuario = $_SESSION['id_usuario'] ?? 1;
 
     $stmt = $conn->prepare("INSERT INTO Ventas (id_usuario, id_envio, id_pago, total) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("iiid", $id_usuario, $id_envio, $id_pago, $total_compra);
-    $stmt->execute();
-    $id_venta = $stmt->insert_id;
-    $stmt->close();
+    $stmt->execute([$id_usuario, $id_envio, $id_pago, $total_compra]);
+    $id_venta = $conn->lastInsertId();
 
     // Insertar en DETALLE_VENTAS
-    $stmt = $conn->prepare("INSERT INTO Detalle_ventas (cantidad, precio_unitario, subtotal, id_venta, id_producto) VALUES (?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO Detalle_ventas (cantidad, precio_unitario, subtotal, id_venta, id_producto) 
+                            VALUES (?, ?, ?, ?, ?)");
 
     foreach ($carrito as $item) {
         $cantidad = (int) $item['quantity'];
         $precio_unitario = floatval(preg_replace('/[^0-9.]+/', '', $item['price']));
         $subtotal = $cantidad * $precio_unitario;
-        $id_producto = (int) $item['id']; // asegurate de tener este campo en tu carritooo
+        $id_producto = (int) $item['id'];
 
-        $stmt->bind_param("iddii", $cantidad, $precio_unitario, $subtotal, $id_venta, $id_producto);
-        $stmt->execute();
+        $stmt->execute([$cantidad, $precio_unitario, $subtotal, $id_venta, $id_producto]);
     }
 
-    $stmt->close();
     $conn->commit();
-
     echo "Compra registrada con éxito.";
 
 } catch (Exception $e) {
-    $conn->rollback();
+    $conn->rollBack();
     echo "Error al guardar la compra: " . $e->getMessage();
 }
-
-$conn->close();
 ?>
