@@ -240,9 +240,10 @@ $categorias = $categoriasQuery->fetchAll(PDO::FETCH_ASSOC);
             </p>
             <div>
                 <select class="forma_selecionar" id="ordenarPrecios">
+                    <option value="">-- Ordenar por --</option>
                     <option value="alto" <?php echo (isset($_GET['orden']) && $_GET['orden'] === 'alto') ? 'selected' : ''; ?>>Precio más alto</option>
                     <option value="bajo" <?php echo (isset($_GET['orden']) && $_GET['orden'] === 'bajo') ? 'selected' : ''; ?>>Precio más bajo</option>
-                    <option value="" <?php echo (!isset($_GET['orden']) || $_GET['orden'] == '') ? 'selected' : ''; ?>>Los más relevantes</option>
+                    <option value="relevante" <?php echo (!isset($_GET['orden']) || $_GET['orden'] == 'relevante') ? 'selected' : ''; ?>>Los más relevantes</option>
                 </select>
             </div>
         </div>
