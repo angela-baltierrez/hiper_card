@@ -116,7 +116,7 @@ $categorias = $categoriasQuery->fetchAll(PDO::FETCH_ASSOC);
             <img src="../hiper_card/assets/images/hipercard logo.png" alt="logo de la marca">
         </div>
         <div class="titulo_pagina">
-            <a href="superpagina.php"><h2>Hiper-card</h2></a>
+            <a href="superpagina.php"><h4>Hiper-card</h4></a>
         </div>
         
     <form class="search_box" method="get" action="departamentos.php"> <!-- nuevo PX-->
