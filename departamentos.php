@@ -171,7 +171,7 @@ $categorias = $categoriasQuery->fetchAll(PDO::FETCH_ASSOC);
 
     <?php endif; ?>
 
-                <li id="btn-perfil" href="../hiper_card/perfil.php" style="cursor: pointer;" ><?php echo htmlspecialchars($_SESSION["usuario"]); ?> </li>  <!-- nombre del cuenta -->
+                <a id="btn-perfil" href="../hiper_card/perfil.php" style="cursor: pointer;" ><?php echo htmlspecialchars($_SESSION["usuario"]); ?> </a>  <!-- nombre del cuenta -->
             </ul>
         </nav>
         </header>
