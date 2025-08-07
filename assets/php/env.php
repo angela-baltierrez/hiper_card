@@ -3,15 +3,12 @@
 class Cconexion {
 
     public static function ConexionBD() {
+        
         $host = 'localhost'; // Cambiar si usas un servidor remoto
         $dbname = 'hiper_card5'; // Nombre de la base de datos
         $username = 'sa'; // Usuario de la base de datos
         $password = '1234'; // Contraseña del usuario
-<<<<<<< HEAD
         $servidor = 'DESKTOP-QB22C4J\SQLEXPRESS'; // Nombre del servidor o dirección IP
-=======
-        $servidor = 'DESKTOP-V10GCCE\SQLEXPRESS'; // Nombre del servidor o dirección IP
->>>>>>> bc84682c41b67b8c3729a374486e0c6b7119bf30
 
         try {
             // Establecer conexión usando PDO y SQL Server, pdo se usa para interactual con la base
