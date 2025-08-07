@@ -4,6 +4,7 @@
         <head>
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <link rel="stylesheet" href="../hiper_card/assets/css/pago.css">
           <title>Document</title>
         </head>
         <body>
@@ -56,7 +57,18 @@
         <label>CSC:</label>
       </div>
       <div style="display: flex; gap: 10px;">
-        <input type="text" name="vencimiento" placeholder="MM/AA" maxlength="5" required>
+        <input type="text" id="vencimiento" name="vencimiento" placeholder="MM/AA" maxlength="5" required>
+        
+<script>
+document.getElementById("vencimiento").addEventListener('input', function(e) {
+    let valor = this.value.replace(/\D/g, ''); // eliminar todo lo que no sea número
+    if (valor.length >= 3) {
+        this.value = valor.slice(0, 2) + '/' + valor.slice(2, 4);
+    } else {
+        this.value = valor;
+    }
+});
+</script>
         <input type="text" name="csc" placeholder="CSC (3 dígitos)" maxlength="3" required>
       </div>
 

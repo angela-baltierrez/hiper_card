@@ -510,14 +510,14 @@ require_once ('../hiper_card/assets/php/conexion-departamentos.php');
 						</div>
 					</div>
 
-
 					<div class="productos_cartas_disponible">
+
         <?php if (!empty($productos)): ?>
             <?php foreach ($productos as $producto): ?>
                 <div class="columna">
                     <div class="cuerpo_de_la_carta"> 
                         <div class="cuerpo_carta_imagen">
-                            <a href="registro.php?id=<?php echo $producto['id_producto']; ?>">
+                            <a href="registro.php?id=<?php echo $producto['id_producto'];?>">
                                 <img src="../hiper_card/assets/images/products/<?php echo strtolower(str_replace(' ', '', $producto['nombre_producto'])); ?>.jpg" 
                                     alt="<?php echo htmlspecialchars($producto['nombre_producto']); ?>">
                             </a>
@@ -541,11 +541,24 @@ require_once ('../hiper_card/assets/php/conexion-departamentos.php');
     </div>
 
 
-
 			</section>
 			<!-- Popular Products End-->
 			
-			
+		
+    <script>
+    document.getElementById('ordenarPrecios').addEventListener( function () {
+        const valor = this.value;
+        const urlParams = new URLSearchParams(window.location.search);
+
+        if (valor) {
+            urlParams.set('orden', valor);
+        } else {
+            urlParams.delete('orden');
+        }
+
+        window.location.search = urlParams.toString();
+    });
+    </script>	
 		</main>
 
 		<!-- Modal -->
