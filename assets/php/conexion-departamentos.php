@@ -9,7 +9,7 @@ try {
     // Obtener parámetros desde la URL
     $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : null;
     $busqueda = isset($_GET['busqueda']) ? $_GET['busqueda'] : null; //nuevo px
-    $orden = isset($_GET['orden']) ? $_GET['orden'] : null;
+    $orden = isset($_GET['orden']) ? $_GET['orden'] : 'relevante';;
 
     // Construir la consulta base
     $sql = "
