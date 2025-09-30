@@ -17,6 +17,42 @@ a{
     cursor: pointer;
 }
 
+.menu-opciones{
+width: 300px;
+}
+
+.menu-lista{
+width: 100%;
+height: 100vh;
+display: flex;
+justify-content: center;
+flex-direction: column;
+border-radius:  0 16px 16px 0;
+background-color: #dfdada;
+}
+
+.lista-objeto{
+    width:100%;
+    text-align: center;
+    font-size: 40px;
+    margin-top: 10px;
+
+}
+
+.lista-objeto:hover{
+background-color: #007bff;
+cursor: pointer;
+}
+
+.cuerpo-principal{
+    display: flex;
+}
+
+.cuerpo-perfil{
+    display: flex;
+    justify-content: center;
+}
+
 .btn-comprar {
     background-color: #28a745;
     color: white;
