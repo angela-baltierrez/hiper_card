@@ -36,9 +36,24 @@
   </ul>
         </nav>
     <div class="cuerpo-perfil">
-            <img src="../hiper_card/assets/images/icons/panda.png" width="100" height="100" alt="logo de la marca"> 
 
+            <img src="../hiper_card/assets/images/icons/panda.png" class="foto-perfil"  alt="logo de la marca"> 
+    <div class="perfil-datos">
+    <form class="form-datos" method="POST" action="../hiper_card/assets/php/conexion-login.php" autocomplete="on">
+        <div class="form-group">
+          <label for="email">Corre electronico:</label>
+          <input type="email" id="email" name="email" placeholder="Ingresa tu correo electronico" required autocomplete="username">
+          <label for="password">Contraseña:</label>
+          <input type="password" id="password" name="password" placeholder="Ingresa una contraseña" required autocomplete="current-password">
+          <a class="link" href="registro.php"> Si no tenes cuenta, haz click aquí </a>
+        </div>
+      
+        <div class="form-group button-class">
+          <button id= "submit" type="submit" style="color: #fff;">Iniciar sesion</button>
+        </div>
+      </form>
     </div>
+    
     <div class="cuerpo-datos"></div>
     <div class="cuerpo-cerra-sesion"></div>
 
