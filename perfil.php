@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../hiper_card/assets/css/perfil.css">
     <title>Document</title>
 </head>
+
 <body>
      <header class="header">
         <div class="logo">
@@ -24,39 +25,48 @@
         <nav class="menu-opciones">
   <ul class="menu-lista">
     <li class="lista-objeto"><a href="#">Inicio</a></li>
-    <li class="lista-objeto">
-      <a href="#">perfil</a>
-      <ul class="submenu">
-        <li class="lista-objeto"><a href="#">Producto A</a></li>
-        <li class="lista-objeto"><a href="#">Producto B</a></li>
-      </ul>
-    </li>
-    <li class="lista-objeto"><a href="#">datos</a></li>
-    <li class="lista-objeto"><a href="#">Cerra sesion</a></li>
+    <li class="lista-objeto"> <a onclick="mostrarSeccion('perfil')">Perfil</a></li>
+    <li class="lista-objeto"><a onclick="mostrarSeccion('historial')">Historial compras</a></li>
+    <li class="lista-objeto"><a onclick="mostrarSeccion('cerrar')">Cerrar sesión</a></li>
   </ul>
         </nav>
-    <div class="cuerpo-perfil">
+    <div id="perfil" class="cuerpo-perfil">
 
             <img src="../hiper_card/assets/images/icons/panda.png" class="foto-perfil"  alt="logo de la marca"> 
     <div class="perfil-datos">
     <form class="form-datos" method="POST" action="../hiper_card/assets/php/conexion-login.php" autocomplete="on">
         <div class="form-group">
           <label for="email">Corre electronico:</label>
-          <input type="email" id="email" name="email" placeholder="Ingresa tu correo electronico" required autocomplete="username">
+              <div class="input-group">
+          <input type="email" id="email" name="email" placeholder="Ingresa tu correo electronico" required autocomplete="username" disabled required autocomplete="username">
+           <button type="button" onclick="desbloquear('email', this)">✏️</button>
+                </div>
           <label for="password">Contraseña:</label>
-          <input type="password" id="password" name="password" placeholder="Ingresa una contraseña" required autocomplete="current-password">
-          <a class="link" href="registro.php"> Si no tenes cuenta, haz click aquí </a>
-        </div>
-      
-        <div class="form-group button-class">
-          <button id= "submit" type="submit" style="color: #fff;">Iniciar sesion</button>
-        </div>
+          <div class="input-group">
+          <input type="password" id="password" name="password" placeholder="Ingresa una contraseña" required autocomplete="current-password" disabled required autocomplete="current-password">
+           <button type="button" onclick="desbloquear('email', this)">✏️</button>
+            </div>
+          </div>
       </form>
     </div>
-    
-    <div class="cuerpo-datos"></div>
-    <div class="cuerpo-cerra-sesion"></div>
+    </div>   
+    <div id="historial" class="cuerpo-historial-de-compras">
+      <form class="form-datos">
+      <label>Fecha: 01/10/2025 - Compra #1234</label>
+      <label>fecha:</label>
+      <label>fecha:</label>
+      <label>fecha:</label>
+      </form>
+    </div>
+
+    <div class="cuerpo-cerra-sesion">
 
     </div>
+        </div>
+ 
+
+    <script src="../hiper_card/assets/js/perfil.js"></script>
+
 </body>
+
 </html>

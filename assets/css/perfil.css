@@ -6,6 +6,34 @@
 }
 
 
+    /* Simplemente para ver el cambio MAS TARDE TOCAR*/
+    .cuerpo-perfil, .cuerpo-historial-de-compras, .cuerpo-cerra-sesion {
+      display: none;
+    }
+
+    .visible {
+      display: block;
+    }
+
+    .menu-lista {
+      list-style: none;
+      padding: 0;
+    }
+
+    .menu-lista li {
+      margin: 8px 0;
+    }
+
+    .menu-lista a {
+      cursor: pointer;
+      text-decoration: none;
+      color: blue;
+    }
+
+    .menu-lista a:hover {
+      text-decoration: underline;
+    }
+
 a{
     text-decoration: none !important;
     color: #2da82d;
