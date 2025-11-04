@@ -1,4 +1,12 @@
 <?php
+session_start();
+if (!isset($_SESSION["usuario"])) {
+    header("Location: login.php");
+    exit();
+}
+?>
+
+<?php
 require_once('../hiper_card/assets/php/conexion-departamentos.php');
 
 try {
@@ -52,6 +60,17 @@ try {
     die("Error: " . $e->getMessage());
 }
 ?>
+
+<?php 
+        require_once ('../hiper_card/assets/php/conexion-categorias.php'); 
+  ?>
+
+<?php
+// Antes del foreach de productos:
+$categoriasQuery = $conn->query("SELECT id_categoria, nombre FROM Categorias");
+$categorias = $categoriasQuery->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,17 +87,70 @@ try {
      <div class="titulo_pagina">
         <a href="../hiper_card/superpagina.php"><h2>Hiper-card</h2></a>
      </div>
-     <div class="search_box">
-         <input class="" type="search" placeholder="Search for product" aria-label="Search">
-         <button class="" type="submit">Buscar</button>
-     </div>
-     <nav>
+    <form class="search_box" method="get" action="departamentos.php"> <!-- nuevo PX-->
+        <input type="search" name="busqueda" placeholder="Buscar producto" aria-label="Buscar">
+        <button class="btnbuscar" type="submit" >Buscar</button>
+    </form>
+             <div class="container-icon">
+            <div class="container-cart-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                    </svg>
+                <div class="count-products">
+                    <span id="contador-productos">0</span>
+                </div>
+            </div>
+
+            <div class="container-cart-products hidden-cart">
+                <div class="row-product hidden">
+                    <div class="cart-product">
+                        <div class="info-cart-product">
+                            <span class="cantidad-producto-carrito">1</span>
+                            <p class="titulo-producto-carrito">producto_ejemplo</p>
+                            <span class="precio-producto-carrito">$80</span>
+                        </div>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="icon-close"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M6 18L18 6M6 6l12 12"
+                            />
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="cart-total hidden">
+
+                <h3>Total:</h3>
+                    <span class="total-pagar">$0</span>
+                    
+                     <button id="btn-comprar" class="btn-comprar">Comprar</button>
+                </div>
+                <p class="cart-empty">El carrito está vacío</p>
+            </div>
+        </div>
+ <nav>
          <ul class="nav-link">
-             <li><a href="lista_favoritos"></a>elpepe</li>
-             <li><a href="perfil"></a>perfil</li>
-             <li><a href="lista_productos"></a>carrito</li>
-         </ul>
-     </nav>
+                
+  <?php if (isset($_SESSION["id_rol"]) && $_SESSION["id_rol"] == 1): ?>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+        
+    <button type="button" onclick="modal1.js" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@">AGREGAR PRODUCTO</button>
+    <script src="modal1.js"></script>
+
+    <?php endif; ?>
+
+                <a class="perfil" id="btn-perfil" href="../hiper_card/perfil.php" ><?php echo htmlspecialchars($_SESSION["usuario"]); ?> </a>  <!-- nombre del cuenta -->
+            </ul>
+        </nav>
     </header>
     <div class="mani">
     <nav class="nav-opciones-categorias">
@@ -175,7 +247,7 @@ try {
          <div class="para_la_informacion">
              <div class="para_la_informacion_titulo"><h1><?php echo htmlspecialchars($producto['nombre_producto']); ?></h1></div>
                  <div class="para_la_informacion_precio"><h1>Precio: $<?php echo $producto['precio']; ?></h1></div>
-                 <button class="button_comprar">agregar</button>
+                 <button class="button_comprar" data-id="<?php echo $id_producto; ?>">agregar</button>
                  <div class="descripcion_texto"><p>descripcion:</p></div>
                  <div class="para_la_informacion_descripcion"><p><?php echo htmlspecialchars($producto['descripcion']); ?></p></div>
          </div>
@@ -214,4 +286,5 @@ try {
 </footer>
  </body>
  <script src="../hiper_card/assets/js/cambiarFoto.js"></script>   
+ <script src="../hiper_card/assets/js/departamentos.js"></script>
 </html>

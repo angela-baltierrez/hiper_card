@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         // Buscar al usuario por correo electrónico
-        $sql = "SELECT nombre_usuario, contraseña, id_rol, nombre, apellido FROM Usuarios WHERE email = :email";
+        $sql = "SELECT id_usuario, nombre_usuario, contraseña, id_rol, nombre, apellido FROM Usuarios WHERE email = :email";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
@@ -28,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verificar la contraseña
         if ($user && password_verify($password, $user["contraseña"])) {
             // Guardar información en sesión
+            $_SESSION["id_usuario"] = $user["id_usuario"];
             $_SESSION["usuario"] = $user["nombre_usuario"];
             $_SESSION["email"] = $email;
             $_SESSION["id_rol"] = $user["id_rol"];

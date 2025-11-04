@@ -105,6 +105,9 @@ a{
     padding: 10px
 }
 
+
+/*-----------------------*/
+
 .header .nav-link{
     list-style: none; /*para quitar los puntitos de la lista*/
     margin-top: 15px;
@@ -352,7 +355,7 @@ a{
 /*para el nuevo*/
 
 
-/**/
+/*carrp*/
 .añadir_carro a {
     display: inline-block;
     margin-top: 1rem;
@@ -370,7 +373,6 @@ a{
 
 /*nuevo estilo logo tienda*/
 /*Estilos nuevos*/
-
 
 .container-icon{
     position: relative;
@@ -394,7 +396,6 @@ a{
     position: absolute;
     top: 50px;
     right: 0;
-
     background-color: #fff;
     width: 400px;
     z-index: 1;
