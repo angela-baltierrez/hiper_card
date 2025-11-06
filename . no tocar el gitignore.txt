@@ -1,0 +1,23 @@
+paso 1:vé al htdocs
+cd /c/xampp/htdocs
+
+paso 2: descargar el composer con comandos
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+
+paso 3: instala el composer
+php composer-setup.php --install-dir=C:\xampp\php --filename=composer
+
+si no funciona prueba esto:
+php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
+paso 4: verifica
+
+composer -V
+
+debe decir la version ej:
+Composer version 2.7.2 2025-01-15 12:34:56
+
+paso 5: limpia el desastre 
+php -r "unlink('composer-setup.php');"
+
+

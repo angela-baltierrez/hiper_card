@@ -75,7 +75,7 @@ $foto_perfil = !empty($user['foto_perfil'])
 
     <div class="perfil-datos">
     <form class="form-datos" method="POST" action="../hiper_card/assets/php/conexion-login.php" autocomplete="on">
-            <button type="button" onclick="document.getElementById('nueva_foto').click()">Cambiar foto</button>
+           <button type="button" onclick="document.getElementById('nueva_foto').click()">Cambiar foto</button>
       <button type="submit">Guardar foto</button>
         <div class="form-group">
 
