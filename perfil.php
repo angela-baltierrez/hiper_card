@@ -63,40 +63,48 @@ $foto_perfil = !empty($user['foto_perfil'])
     <li class="lista-objeto"><a onclick="mostrarSeccion('cerrar_login')">Cerrar sesión</a></li>
   </ul>
         </nav>
-    <div id="perfil" class="cuerpo-perfil">
 
-<div class="perfil-foto">
-  <form id="form-foto" action="../hiper_card/assets/php/subir_foto.php" method="POST" enctype="multipart/form-data">
-    <img id="foto-usuario" src="<?php echo htmlspecialchars($foto_perfil); ?>" class="foto-perfil" alt="Foto de perfil">
-    <input type="file" name="foto" id="nueva_foto" accept="image/*" style="display:none;" onchange="previsualizarFoto(event)">
-  </form>
+
+<div id="perfil" class="cuerpo-perfil">
+
+  <div class="perfil-foto">
+    <form id="form-foto" enctype="multipart/form-data">
+      <img id="foto-usuario" 
+           src="<?php echo htmlspecialchars($foto_perfil); ?>" 
+           class="foto-perfil" 
+           alt="Foto de perfil">
+      <input type="file" name="foto" id="nueva_foto" accept="image/*" style="display:none;" onchange="previsualizarFoto(event)">
+      <div class="botones-foto">
+        <button type="button" onclick="document.getElementById('nueva_foto').click()">Cambiar foto</button>
+        <button type="submit">Actualizar foto</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="perfil-datos">
+    <form class="form-datos" method="POST" autocomplete="on">
+      <div class="form-group">
+        <label for="email">Correo electrónico:</label>
+        <div class="input-group">
+          <input type="email" id="email" name="email"
+                 value="<?php echo htmlspecialchars($email); ?>"
+                 disabled required autocomplete="username">
+          <button type="button" onclick="desbloquear('email', this)">✏️</button>
+        </div>
+
+        <label for="password">Contraseña:</label>
+        <div class="input-group">
+          <input type="password" id="password" name="password"
+                 value="<?php echo htmlspecialchars($password); ?>"
+                 disabled required autocomplete="current-password">
+          <button type="button" onclick="desbloquear('password', this)">✏️</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
 </div>
 
-
-    <div class="perfil-datos">
-    <form class="form-datos" method="POST" action="../hiper_card/assets/php/conexion-login.php" autocomplete="on">
-           <button type="button" onclick="document.getElementById('nueva_foto').click()">Cambiar foto</button>
-      <button type="submit">Guardar foto</button>
-        <div class="form-group">
-
-          <label for="email">Corre electronico:</label>
-              <div class="input-group">
-            <input type="email" id="email" name="email"
-         value="<?php echo htmlspecialchars($email); ?>"
-         disabled required autocomplete="username">
-           <button type="button" onclick="desbloquear('email', this)">✏️</button>
-                </div>
-          <label for="password">Contraseña:</label>
-          <div class="input-group">
-          <input type="password" id="password" name="password"
-         value="<?php echo htmlspecialchars($password); ?>"
-         disabled required autocomplete="current-password">          
-         <button type="button" onclick="desbloquear('password', this)">✏️</button>
-            </div>
-          </div>
-      </form>
-    </div>
-    </div>   
     <div id="historial" class="cuerpo-historial-de-compras">
       <form class="form-datos">
         <h2>Historial de compras</h2>
